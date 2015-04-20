@@ -9,10 +9,11 @@ namespace Modelo.CAD
 {
     public class ClienteCAD
     {
-        private static IList<ClienteEN> clientes = new List<ClienteEN>();
+        private static IList<ClienteEN> clientes;
         
         private static void IniciarListaClientes()
         {
+            clientes = new List<ClienteEN>();
             clientes.Add(new ClienteEN(1, "Manu", "Manu@hada.com", "manuPassword"));
             clientes.Add(new ClienteEN(2, "Ana", "Ana@hada.com", "anaPassword"));
             clientes.Add(new ClienteEN(3, "Andres", "Andres@hada.com", "andresPassword"));

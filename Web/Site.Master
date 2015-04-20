@@ -5,11 +5,11 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    <script src="Bootstrap/js/jquery-1.11.2.js"></script>
+    <script type="text/javascript" src="Bootstrap/js/jquery-1.11.2.js"></script>
     <link href="~/Bootstrap/css/bootstrap.css" rel="Stylesheet" runat="server"/>
     <link href="~/Bootstrap/css/bootstrap-theme.css" rel="Stylesheet" runat="server"/>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
-    <script src="Bootstrap/js/bootstrap.js"></script>
+    <link href="~/Styles/Estilos.css" rel="Stylesheet" runat="server" />
+    <script type="text/javascript" src="Bootstrap/js/bootstrap.js"></script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
