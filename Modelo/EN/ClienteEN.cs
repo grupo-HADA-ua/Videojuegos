@@ -52,5 +52,12 @@ namespace Modelo.EN
             ClienteEN p = (ClienteEN)obj;
             return id == p.id & nombre == p.nombre & email == p.email & password == p.password & direccion == p.direccion;
         }
+
+        public override int GetHashCode()
+        {
+            int hash = 17;
+            hash = hash * 37 + Email.GetHashCode();
+            return hash;
+        }
     }
 }
