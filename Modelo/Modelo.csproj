@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="CAD\ClienteCAD.cs" />
     <Compile Include="CAD\ProductoCAD.cs" />
+    <Compile Include="ENUM\Edad.cs" />
+    <Compile Include="EN\CarritoEN.cs" />
     <Compile Include="EN\ClienteEN.cs" />
     <Compile Include="EN\CompraEN.cs" />
     <Compile Include="EN\ConsolaEN.cs" />

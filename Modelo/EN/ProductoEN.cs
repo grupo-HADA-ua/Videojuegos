@@ -8,6 +8,7 @@ namespace Modelo.EN
     public class ProductoEN
     {
         
+
         private string nombre;
         public string Nombre { get { return nombre; } set { nombre = value; } }
 
@@ -41,5 +42,14 @@ namespace Modelo.EN
             Precio = precio;
             CantidadStock = cantidadstock;
         }
+
+        public override bool Equals(Object obj)
+        {
+            if (!(obj is ProductoEN)) return false;
+
+            ProductoEN p = (ProductoEN)obj;
+            return id == p.id & nombre == p.nombre & precio == p.precio & cantidadstock == p.cantidadstock;
+        }
+
     }
 }
