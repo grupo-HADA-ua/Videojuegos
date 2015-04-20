@@ -7,13 +7,24 @@ namespace Modelo.EN
 {
     public class ProductoEN
     {
-        
+
+        private bool descuento;
+        public bool Descuento { get { return descuento; } set { descuento = value; } }
+
+        private DescuentoEN descontar;
 
         private string nombre;
         public string Nombre { get { return nombre; } set { nombre = value; } }
 
         private double precio;
-        public double Precio { get { return precio; } set { precio = value; } }
+        public double Precio { 
+            get {
+                if (descuento)
+                    return precio = precio - (precio * descontar.Descuento);
+                else
+                    return precio;
+            }
+            set { precio = value; } }
 
         private int cantidadstock;
         public int CantidadStock { get { return cantidadstock; } set { cantidadstock = value; } }
