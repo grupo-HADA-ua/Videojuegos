@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>1e22d764-f64f-460e-a4f6-6c7b141c8207</ProjectGuid>
+    <ProjectGuid>{2D7E35A1-40E5-4295-BFBC-C807194A7446}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Modelo</RootNamespace>
@@ -30,6 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -40,9 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="CAD\ClienteCAD.cs" />
+    <Compile Include="CAD\ProductoCAD.cs" />
+    <Compile Include="EN\ClienteEN.cs" />
+    <Compile Include="EN\CompraEN.cs" />
+    <Compile Include="EN\ConsolaEN.cs" />
+    <Compile Include="EN\DescuentoEN.cs" />
+    <Compile Include="EN\LinpedEN.cs" />
+    <Compile Include="EN\PerifericoEn.cs" />
+    <Compile Include="EN\ProductoEN.cs" />
+    <Compile Include="EN\UsuarioEN.cs" />
+    <Compile Include="EN\VideojuegoEN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
