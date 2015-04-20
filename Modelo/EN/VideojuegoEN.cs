@@ -7,6 +7,6 @@ namespace Modelo.EN
 {
     public class VideojuegoEN : ProductoEN
     {
-        
+        private string nombre;
     }
 }
