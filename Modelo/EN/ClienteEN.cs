@@ -19,26 +19,38 @@ namespace Modelo.EN
         private string password;
         public string Password { get { return password; } set { password = value; } }
 
+        private string direccion;
+        public string Direccion { get { return direccion; } set { direccion = value; } }
+
         public ClienteEN()
         {
         }
 
-        public ClienteEN(int id, string nombre, string email, string password)
+        public ClienteEN(int id, string nombre, string email, string password, string direccion)
         {
-            inicializar(id, nombre, email, password);
+            inicializar(id, nombre, email, password, direccion);
         }
 
         public ClienteEN(ClienteEN c)
         {
-            inicializar(c.Id, c.Nombre, c.Email, c.Password);
+            inicializar(c.Id, c.Nombre, c.Email, c.Password, c.Direccion);
         }
 
-        private void inicializar(int id, string nombre, string email, string password)
+        private void inicializar(int id, string nombre, string email, string password, string direccion)
         {
             Id = id;
             Nombre = nombre;
             Email = email;
             Password = password;
+            Direccion = direccion;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (!(obj is ClienteEN)) return false;
+
+            ClienteEN p = (ClienteEN)obj;
+            return id == p.id & nombre == p.nombre & email == p.email & password == p.password & direccion == p.direccion;
         }
     }
 }
