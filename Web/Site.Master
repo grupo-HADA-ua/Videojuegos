@@ -5,48 +5,18 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <script src="Bootstrap/js/jquery-1.11.2.js"></script>
+    <link href="~/Bootstrap/css/bootstrap.css" rel="Stylesheet" runat="server"/>
+    <link href="~/Bootstrap/css/bootstrap-theme.css" rel="Stylesheet" runat="server"/>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <script src="Bootstrap/js/bootstrap.js"></script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form runat="server">
-    <div class="page">
-        <div class="header">
-            <div class="title">
-                <h1>
-                    Mi aplicación ASP.NET
-                </h1>
-            </div>
-            <div class="loginDisplay">
-                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
-                    <AnonymousTemplate>
-                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Iniciar sesión</a> ]
-                    </AnonymousTemplate>
-                    <LoggedInTemplate>
-                        Pantalla de bienvenida <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/"/> ]
-                    </LoggedInTemplate>
-                </asp:LoginView>
-            </div>
-            <div class="clear hideSkiplink">
-                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
-                    <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Página principal"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Acerca de"/>
-                    </Items>
-                </asp:Menu>
-            </div>
-        </div>
-        <div class="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
-        </div>
-        <div class="clear">
-        </div>
-    </div>
-    <div class="footer">
-        
-    </div>
+    <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+    
     </form>
 </body>
 </html>
