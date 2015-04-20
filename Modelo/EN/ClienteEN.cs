@@ -7,10 +7,20 @@ namespace Modelo.EN
 {
     public class ClienteEN
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        private int id;
+        public int Id { get { return id; } set { id = value; } }
 
+        private string nombre;
+        public string Nombre { get { return nombre; } set { nombre = value; } }
+
+        private string email;
+        public string Email { get { return email; } set { email = value; } }
+
+        private string password;
+        public string Password { get { return password; } set { password = value; } }
+
+        public ClienteEN()
+        {
+        }
     }
 }
