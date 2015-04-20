@@ -22,5 +22,23 @@ namespace Modelo.EN
         public ClienteEN()
         {
         }
+
+        public ClienteEN(int id, string nombre, string email, string password)
+        {
+            inicializar(id, nombre, email, password);
+        }
+
+        public ClienteEN(ClienteEN c)
+        {
+            inicializar(c.Id, c.Nombre, c.Email, c.Password);
+        }
+
+        private void inicializar(int id, string nombre, string email, string password)
+        {
+            Id = id;
+            Nombre = nombre;
+            Email = email;
+            Password = password;
+        }
     }
 }
