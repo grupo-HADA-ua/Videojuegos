@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Modelo.EN
 {
-    public class LinpedEN
+    public class LineaPedidoEN
     {
         private int id;
         public int Id { get { return id; } set { id = value; } }
@@ -16,17 +16,17 @@ namespace Modelo.EN
         private int cantidad;
         public int Cantidad { get { return cantidad; } set { cantidad = value; } }
 
-        public LinpedEN()
+        public LineaPedidoEN()
         {
 
         }
 
-        public LinpedEN(int id, ProductoEN producto, int cantidad)
+        public LineaPedidoEN(int id, ProductoEN producto, int cantidad)
         {
             inicializar(id, producto, cantidad);
         }
 
-        public LinpedEN(LinpedEN l)
+        public LineaPedidoEN(LineaPedidoEN l)
         {
             inicializar(l.Id, l.Producto, l.Cantidad);
         }
@@ -44,8 +44,8 @@ namespace Modelo.EN
             {
                 return false;
             }
-            LinpedEN l = (LinpedEN)obj;
-            return (Id == l.Id) && (Producto.Equals(l.Producto) && (Cantidad == l.Cantidad); 	        
+            LineaPedidoEN l = (LineaPedidoEN)obj;
+            return (Id == l.Id) && (Producto.Equals(l.Producto) && (Cantidad == l.Cantidad)); 	        
         }
     }
 }

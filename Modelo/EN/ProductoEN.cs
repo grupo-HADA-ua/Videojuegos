@@ -24,7 +24,8 @@ namespace Modelo.EN
                 else
                     return precio;
             }
-            set { precio = value; } }
+            set { precio = value; } 
+        }
 
         private int cantidadstock;
         public int CantidadStock { get { return cantidadstock; } set { cantidadstock = value; } }

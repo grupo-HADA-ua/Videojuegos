@@ -44,14 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CAD\ClienteCAD.cs" />
+    <Compile Include="CAD\PedidoCAD.cs" />
     <Compile Include="CAD\ProductoCAD.cs" />
-    <Compile Include="ENUM\Edad.cs" />
-    <Compile Include="EN\CarritoEN.cs" />
     <Compile Include="EN\ClienteEN.cs" />
-    <Compile Include="EN\CompraEN.cs" />
     <Compile Include="EN\ConsolaEN.cs" />
     <Compile Include="EN\DescuentoEN.cs" />
-    <Compile Include="EN\LinpedEN.cs" />
+    <Compile Include="EN\LineaPedidoEN.cs" />
+    <Compile Include="EN\PedidoEN.cs" />
     <Compile Include="EN\PerifericoEn.cs" />
     <Compile Include="EN\ProductoEN.cs" />
     <Compile Include="EN\UsuarioEN.cs" />
