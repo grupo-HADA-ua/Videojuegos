@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Modelo.ENUM;
+using Modelo.CAD;
 
 namespace Modelo.EN
 {
     public class VideojuegoEN : ProductoEN
     {
+
+        private VideojuegoCAD CAD_Videojuego;
+
         private string nombre;
         public string Nombre { get { return nombre; } set { nombre = value; } }
 
@@ -52,6 +56,60 @@ namespace Modelo.EN
 
             VideojuegoEN p = (VideojuegoEN)obj;
             return id == p.id & nombre == p.nombre & precio == p.precio & cantidadstock == p.cantidadstock & edadminima == p.edadminima;
+        }
+
+
+        //Metodos
+        //CRUD
+
+        public void crearCad()
+        {
+            if (CAD_Videojuego == null)
+                CAD_Videojuego = new VideojuegoCAD();
+        }
+
+        //INtroduce un nuevo Videojuego en la bbdd
+        public void crearVideojuego()
+        {
+            crearCad();
+            try
+            {
+               // CAD_Videojuego.crearVideojuego(this);
+            }
+            catch (Exception)
+            {
+                Console.Write("Error al insertar el Videojuego: %s\n");
+            }
+        }
+
+        //Actualiza el Videojuego en la bbdd
+        public void actualizarVideojuego()
+        {
+            crearCad();
+
+            try
+            {
+               // CAD_Videojuego.actualizarVideojuego(this);
+            }
+            catch (Exception)
+            {
+                Console.Write("Error al actualizar el Videojuego: %s\n");
+            }
+        }
+
+        //Borramos un Videojuego de la bbdd
+        public void borrarVideojuego()
+        {
+            if (CAD_Videojuego == null) CAD_Videojuego = new VideojuegoCAD();
+
+          //  CAD_Videojuego.borrarVideojuego(this.id);
+        }
+
+        //Muestra un Videojuego de la bbdd
+        public VideojuegoEN mostrarVideojuego()
+        {
+           // return CAD_Videojuego.mostrarVideojuego(this.id);
+            return null;
         }
     }
 }

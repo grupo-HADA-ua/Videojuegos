@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Modelo.CAD;
 
 namespace Modelo.EN
 {
     public class PerifericoEn : ProductoEN
     {
-        
+
+        private PerifericoCAD CAD_Periferico;
+
         private string nombre;
         public string Nombre { get { return nombre; } set { nombre = value; } }
 
@@ -48,6 +51,53 @@ namespace Modelo.EN
 
             PerifericoEn p = (PerifericoEn)obj;
             return id == p.id & nombre == p.nombre & precio == p.precio & cantidadstock == p.cantidadstock;
+        }
+
+        //Metodos
+        //CRUD
+        public void crearCad()
+        {
+            if (CAD_Periferico == null)
+                CAD_Periferico = new PerifericoCAD();
+        }
+
+        public void crearPeriferico()
+        {
+            crearCad();
+            try
+            {
+               // CAD_Periferico.crearPeriferico(this);
+            }
+            catch (Exception)
+            {
+                Console.Write("Error al insertar el articulo: %s\n");
+            }
+        }
+
+        public void actualizarPeriferico()
+        {
+            crearCad();
+            try
+            {
+               // CAD_Periferico.actualizarPeriferico(this);
+            }
+            catch (Exception)
+            {
+                Console.Write("Error al actualizar el articulo: %s\n");
+            }
+        }
+
+        public void borrarPeriferico()
+        {
+            if (CAD_Periferico == null) CAD_Periferico = new PerifericoCAD();
+
+           // CAD_Periferico.borrarPeriferico(this.id);
+        }
+
+        public PerifericoEn mostrarPeriferico()
+        {
+            //return CAD_Periferico.mostrarPeriferico(this.id);
+            return null;
         }
 
     }
