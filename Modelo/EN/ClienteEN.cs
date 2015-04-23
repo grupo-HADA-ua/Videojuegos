@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Modelo.CAD;
 
 namespace Modelo.EN
 {
     public class ClienteEN
     {
+        private ClienteCAD CAD_cliente;
+
         private int id;
         public int Id { get { return id; } set { id = value; } }
 
@@ -59,5 +62,64 @@ namespace Modelo.EN
             hash = hash * 37 + Email.GetHashCode();
             return hash;
         }
+
+               //Métodos.
+        //CRUD
+
+        public void crearCad()
+        {
+            if (CAD_cliente == null) CAD_cliente = new ClienteCAD();
+        }
+
+        //crear un nuevo cliente en la base de datos.
+        public void crearCliente()
+        {
+            crearCad();
+            try
+            {
+               // CAD_cliente.crearCliente(this);
+            }
+            catch (Exception)
+            {
+                Console.Write("Error al insertar el Cliente: %s\n");
+            }
+        }
+
+        //Modificar un cliente de la base de datos.
+        public void actualizarCliente()
+        {
+            crearCad();
+            try
+            {
+               // CAD_cliente.actualizarCliente(this);
+            }
+            catch (Exception)
+            {
+                Console.Write("Error al actualizar el Cliente: %s\n");
+            }
+        }
+
+        //Eliminar un cliente de la base de datos
+        public void borrarCliente()
+        {
+            crearCad();
+            try
+            {
+               // CAD_cliente.borrarCliente(this.id);
+            }
+            catch (Exception)
+            {
+                Console.Write("Error al borrar el Cliente: %s\n");
+            }
+        }
+
+        //Metodo para mostrar un cliente
+        public ClienteEN mostrarCliente()
+        {
+           // return CAD_cliente.mostrarCliente(this.id);
+            return null;
+        }
+    }
+}
     }
 }

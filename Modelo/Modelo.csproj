@@ -43,9 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CAD\CarritoCAD.cs" />
     <Compile Include="CAD\ClienteCAD.cs" />
+    <Compile Include="CAD\ConsolaCAD.cs" />
+    <Compile Include="CAD\DescuentoCAD.cs" />
+    <Compile Include="CAD\LineaPedidoCAD.cs" />
     <Compile Include="CAD\PedidoCAD.cs" />
+    <Compile Include="CAD\PerifericoCAD.cs" />
     <Compile Include="CAD\ProductoCAD.cs" />
+    <Compile Include="CAD\UsuarioCAD.cs" />
+    <Compile Include="CAD\VideojuegoCAD.cs" />
+    <Compile Include="ENUM\Edad.cs" />
+    <Compile Include="EN\CarritoEN.cs" />
     <Compile Include="EN\ClienteEN.cs" />
     <Compile Include="EN\ConsolaEN.cs" />
     <Compile Include="EN\DescuentoEN.cs" />
