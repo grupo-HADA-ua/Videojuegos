@@ -5,8 +5,7 @@ using System.Text;
 
 namespace Modelo.EN
 {
-    public class UsuarioEN
+    class CarritoEN
     {
-
     }
 }
