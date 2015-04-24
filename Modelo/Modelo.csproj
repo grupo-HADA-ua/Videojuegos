@@ -46,6 +46,10 @@
     <Compile Include="CAD\ClienteCAD.cs" />
     <Compile Include="CAD\ConsolaCAD.cs" />
     <Compile Include="CAD\DescuentoCAD.cs" />
+    <Compile Include="CAD\IClienteCAD.cs" />
+    <Compile Include="CAD\ILineaPedidoCAD.cs" />
+    <Compile Include="CAD\IPedidoCAD.cs" />
+    <Compile Include="CAD\IProductoCAD.cs" />
     <Compile Include="CAD\LineaPedidoCAD.cs" />
     <Compile Include="CAD\PedidoCAD.cs" />
     <Compile Include="CAD\PerifericoCAD.cs" />

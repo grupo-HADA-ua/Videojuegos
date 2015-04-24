@@ -9,7 +9,7 @@ namespace Modelo.EN
     public class LineaPedidoEN
     {
 
-        private LineaPedidoCAD CAD_lineaPedido;
+        private ILineaPedidoCAD cad;
 
         private int id;
         public int Id { get { return id; } set { id = value; } }
@@ -22,7 +22,7 @@ namespace Modelo.EN
 
         public LineaPedidoEN()
         {
-
+            cad = new LineaPedidoCAD();
         }
 
         public LineaPedidoEN(int id, ProductoEN producto, int cantidad)
@@ -40,6 +40,7 @@ namespace Modelo.EN
             Id = id;
             Producto = new ProductoEN(producto);
             Cantidad = cantidad;
+            cad = new LineaPedidoCAD();
         }
 
         public override bool  Equals(object obj)
@@ -52,62 +53,36 @@ namespace Modelo.EN
             return (Id == l.Id) && (Producto.Equals(l.Producto) && (Cantidad == l.Cantidad)); 	        
         }
 
-        //METODOS
-        //CRUD
-
-        public void crearCad()
+        public override int GetHashCode()
         {
-            if (CAD_lineaPedido == null)
-                CAD_lineaPedido = new LineaPedidoCAD();
+            int hash = 17;
+            hash = hash * 37 + Producto.GetHashCode();
+            return hash;
         }
 
-        //Inserta una LineaPedido en la bbdd
-        public void crearOferta()
+        public void Guardar()
         {
-            crearCad();
-            try
-            {
-              //  CAD_lineaPedido.crearLineaPedido(this);
-            }
-            catch (Exception)
-            {
-                Console.Write("Error al insertar una LineaPedido: %s\n");
-            }
+            cad.Crear(this);
         }
 
-        //Actualiza una LineaPedido en la bbdd
-        public void actualizarLineaPedido()
+        public LineaPedidoEN Obtener(int id)
         {
-            crearCad();
-            try
-            {
-               // CAD_lineaPedido.actualizarLineaPedido(this);
-            }
-            catch (Exception)
-            {
-                Console.Write("Error al actualizar una LineaPedido: %s\n");
-            }
+            return cad.Obtener(id);
         }
 
-        //Borrar una LineaPedido en la bbdd
-        public void borrarLineaPedido()
+        public IList<LineaPedidoEN> ObtenerTodos()
         {
-            crearCad();
-            try
-            {
-                //CAD_lineaPedido.borrarLineaPedido(this.id);
-            }
-            catch (Exception)
-            {
-                Console.Write("Error al borrar una LineaPedido: %s\n");
-            }
+            return cad.ObtenerTodos();
         }
 
-        //Mostrar LineaPedido de la bbdd
-        public LineaPedidoEN mostrarLineaPedido()
+        public void Actualizar()
         {
-           // return CAD_lineaPedido.mostrarLineaPedido(this.id);
-            return null;
+            cad.Actualizar(this);
+        }
+
+        public void Borrar()
+        {
+            cad.Borrar(this);
         }
     }
 }

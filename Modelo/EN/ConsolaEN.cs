@@ -8,21 +8,7 @@ namespace Modelo.EN
 {
     public class ConsolaEN : ProductoEN
     {
-
-
         private ConsolaCAD CAD_Consola;
-
-        private string nombre;
-        public string Nombre { get { return nombre; } set { nombre = value; } }
-
-        private double precio;
-        public double Precio { get { return precio; } set { precio = value; } }
-
-        private int cantidadstock;
-        public int CantidadStock { get { return cantidadstock; } set { cantidadstock = value; } }
-
-        private int id;
-        public int Id { get { return id; } set { id = value; } }
 
          public ConsolaEN()
         {
@@ -51,7 +37,14 @@ namespace Modelo.EN
             if (!(obj is ConsolaEN)) return false;
 
             ConsolaEN p = (ConsolaEN)obj;
-            return id == p.id & nombre == p.nombre & precio == p.precio & cantidadstock == p.cantidadstock;
+            return (Id == p.Id & Nombre == p.Nombre & Precio == p.Precio & CantidadStock == p.CantidadStock);
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = 17;
+            hash = hash * 37 * Nombre.GetHashCode();
+            return hash;
         }
 
         //Metodos

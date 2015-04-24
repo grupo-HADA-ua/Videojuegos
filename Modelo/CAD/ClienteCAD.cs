@@ -7,7 +7,7 @@ using System.Data;
 
 namespace Modelo.CAD
 {
-    public class ClienteCAD
+    public class ClienteCAD : IClienteCAD
     {
         private static IList<ClienteEN> clientes;
         
@@ -19,9 +19,9 @@ namespace Modelo.CAD
             clientes.Add(new ClienteEN(3, "Andres", "Andres@hada.com", "andresPassword", "midireccion"));
         }
 
-        public int Crear(string nombre, string email, string password)
+        public int Crear(ClienteEN c)
         {
-            ClienteEN c = new ClienteEN();
+            ClienteEN cliente = new ClienteEN();
             return 1;
         }
 
@@ -41,7 +41,7 @@ namespace Modelo.CAD
 
         }
 
-        public void Borrar(int id)
+        public void Borrar(ClienteEN c)
         {
 
         }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Modelo.CAD
 {
-    class LineaPedidoCAD
+    class LineaPedidoCAD : ILineaPedidoCAD
     {
         public void Crear(LineaPedidoEN l)
         {

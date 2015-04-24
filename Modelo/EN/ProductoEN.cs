@@ -8,13 +8,12 @@ namespace Modelo.EN
 {
     public class ProductoEN
     {
-
-        private ProductoCAD CAD_Producto;
+        private ProductoCAD cad;
 
         private bool descuento;
         public bool Descuento { get { return descuento; } set { descuento = value; } }
 
-        private DescuentoEN descontar;
+        private DescuentoEN descontar = new DescuentoEN(0.0);
 
         private string nombre;
         public string Nombre { get { return nombre; } set { nombre = value; } }
@@ -38,6 +37,7 @@ namespace Modelo.EN
 
          public ProductoEN()
         {
+            cad = new ProductoCAD();
         }
 
         public ProductoEN(int id, string nombre, double precio, int cantidadstock)
@@ -56,6 +56,7 @@ namespace Modelo.EN
             Nombre = nombre;
             Precio = precio;
             CantidadStock = cantidadstock;
+            cad = new ProductoCAD();
         }
 
         public override bool Equals(Object obj)
@@ -66,66 +67,36 @@ namespace Modelo.EN
             return id == p.id & nombre == p.nombre & precio == p.precio & cantidadstock == p.cantidadstock;
         }
 
-        //METODOS
-        //CRUD
-
-        //Metodo para crear el cad
-        public void crearCad()
+        public override int GetHashCode()
         {
-            if (CAD_Producto == null) CAD_Producto = new ProductoCAD();
+            int hash = 17;
+            hash = hash * 37 * Nombre.GetHashCode();
+            return hash;
         }
 
-        //Crea en la base de datos un Producto con los datos de la instancia actual
-        public void crearProducto()
+        public void Guardar()
         {
-            crearCad();
-
-            try
-            {
-               // CAD_Producto.crearProducto(this);
-            }
-            catch (Exception)
-            {//especificar tipo de excepcion
-                Console.Write("Error insertando Producto %s\n");
-            }
+            cad.Crear(this);
         }
 
-        //Metodo que actualiza en la bbdd un Producto
-        public void actualizarProducto()
+        public ProductoEN Obtener(int id)
         {
-            crearCad();
-            try
-            {
-                //CAD_Producto.actualizarProducto(this);
-            }
-            catch (Exception)
-            {//especificar tipo de excepcion
-                Console.Write("Error modificanco Producto: %s\n");
-            }
+            return cad.Obtener(id);
         }
 
-        //Metodo que borra de la bbdd un Producto
-        public void borrarProducto()
+        public IList<ProductoEN> ObtenerTodos()
         {
-            crearCad();
-
-            try
-            {
-               // CAD_Producto.borrarProducto(this.id);
-            }
-            catch (Exception)
-            {//especificar tipo de excepcion
-                Console.Write("Error borrando Producto: %s\n");
-            }
+            return cad.ObtenerTodos();
         }
 
-        //Metodo para mostrar un Producto
-        public ProductoEN mostrarArticulo()
+        public void Actualizar()
         {
-           // return CAD_Producto.mostrarProducto(this.id);
-            return null;
+            cad.Actualizar(this);
         }
 
-
+        public void Borrar()
+        {
+            cad.Borrar(this);
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace Web
 
         protected IList<ClienteEN> ObtenerClientes()
         {
-            IList<ClienteEN> clientes = ClienteCAD.ObtenerTodos();
+            IList<ClienteEN> clientes = new ClienteCAD().ObtenerTodos();
             return clientes;
         }
 

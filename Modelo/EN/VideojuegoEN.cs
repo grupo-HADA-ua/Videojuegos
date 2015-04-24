@@ -12,18 +12,6 @@ namespace Modelo.EN
 
         private VideojuegoCAD CAD_Videojuego;
 
-        private string nombre;
-        public string Nombre { get { return nombre; } set { nombre = value; } }
-
-        private double precio;
-        public double Precio { get { return precio; } set { precio = value; } }
-
-        private int cantidadstock;
-        public int CantidadStock { get { return cantidadstock; } set { cantidadstock = value; } }
-
-        private int id;
-        public int Id { get { return id; } set { id = value; } }
-
         private Edad edadminima;
         public Edad EdadMinima { get { return edadminima; } set { edadminima = value; } }
 
@@ -55,7 +43,16 @@ namespace Modelo.EN
             if (!(obj is VideojuegoEN)) return false;
 
             VideojuegoEN p = (VideojuegoEN)obj;
-            return id == p.id & nombre == p.nombre & precio == p.precio & cantidadstock == p.cantidadstock & edadminima == p.edadminima;
+            return (Id == p.Id && Nombre == p.Nombre && 
+                Precio == p.Precio && CantidadStock == p.CantidadStock 
+                && edadminima == p.edadminima);
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = 17;
+            hash = hash * 37 + Nombre.GetHashCode();
+            return hash;
         }
 
 

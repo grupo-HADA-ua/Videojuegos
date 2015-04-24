@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Modelo.CAD
 {
-    public class ProductoCAD
+    public class ProductoCAD : IProductoCAD
     {
         public void Crear(ProductoEN p)
         {
@@ -30,7 +30,7 @@ namespace Modelo.CAD
             //TODO
         }
 
-        public void Borrar(int id)
+        public void Borrar(ProductoEN p)
         {
             //TODO
         }

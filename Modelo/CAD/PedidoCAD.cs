@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Modelo.CAD
 {
-    class PedidoCAD
+    class PedidoCAD : IPedidoCAD
     {
         public void Crear(PedidoEN p)
         {

@@ -8,7 +8,7 @@ namespace Modelo.EN
 {
     public class ClienteEN
     {
-        private ClienteCAD CAD_cliente;
+        private ClienteCAD cad;
 
         private int id;
         public int Id { get { return id; } set { id = value; } }
@@ -27,6 +27,7 @@ namespace Modelo.EN
 
         public ClienteEN()
         {
+            cad = new ClienteCAD();
         }
 
         public ClienteEN(int id, string nombre, string email, string password, string direccion)
@@ -46,6 +47,7 @@ namespace Modelo.EN
             Email = email;
             Password = password;
             Direccion = direccion;
+            cad = new ClienteCAD();
         }
 
         public override bool Equals(Object obj)
@@ -63,61 +65,31 @@ namespace Modelo.EN
             return hash;
         }
 
-               //Métodos.
-        //CRUD
-
-        public void crearCad()
+        public int Guardar()
         {
-            if (CAD_cliente == null) CAD_cliente = new ClienteCAD();
+            return cad.Crear(this);
         }
 
-        //crear un nuevo cliente en la base de datos.
-        public void crearCliente()
+        public ClienteEN Obtener(int id)
         {
-            crearCad();
-            try
-            {
-               // CAD_cliente.crearCliente(this);
-            }
-            catch (Exception)
-            {
-                Console.Write("Error al insertar el Cliente: %s\n");
-            }
+            return cad.Obtener(id);
+
         }
 
-        //Modificar un cliente de la base de datos.
-        public void actualizarCliente()
+        public IList<ClienteEN> ObtenerTodos()
         {
-            crearCad();
-            try
-            {
-               // CAD_cliente.actualizarCliente(this);
-            }
-            catch (Exception)
-            {
-                Console.Write("Error al actualizar el Cliente: %s\n");
-            }
+            return cad.ObtenerTodos();
         }
 
-        //Eliminar un cliente de la base de datos
-        public void borrarCliente()
+        public void Actualizar()
         {
-            crearCad();
-            try
-            {
-               // CAD_cliente.borrarCliente(this.id);
-            }
-            catch (Exception)
-            {
-                Console.Write("Error al borrar el Cliente: %s\n");
-            }
+            cad.Actualizar(this);
         }
 
-        //Metodo para mostrar un cliente
-        public ClienteEN mostrarCliente()
+        public void Borrar()
         {
-           // return CAD_cliente.mostrarCliente(this.id);
-            return null;
+            cad.Borrar(this);
         }
+         
     }
 }

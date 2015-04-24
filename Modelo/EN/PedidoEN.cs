@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelo.CAD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +8,8 @@ namespace Modelo.EN
 {
     public class PedidoEN
     {
+        private IPedidoCAD cad;
+
         private int id;
         public int Id { get { return id; } set { id = value; } }
 
@@ -24,6 +27,7 @@ namespace Modelo.EN
         public PedidoEN()
         {
             Lineas = new List<LineaPedidoEN>();
+            cad = new PedidoCAD();
         }
 
         public PedidoEN(PedidoEN p)
@@ -41,6 +45,32 @@ namespace Modelo.EN
             Id = id;
             IdCliente = idCliente;
             Lineas = new List<LineaPedidoEN>(l);
+            cad = new PedidoCAD();
+        }
+
+        public void Guardar()
+        {
+            cad.Crear(this);
+        }
+
+        public PedidoEN Obtener(int id)
+        {
+            return cad.Obtener(id);
+        }
+
+        public IList<PedidoEN> ObtenerTodos()
+        {
+            return cad.ObtenerTodos();
+        }
+
+        public void Actualizar()
+        {
+            cad.Actualizar(this);
+        }
+
+        public void Borrar()
+        {
+            cad.Borrar(this);
         }
     }
 }
