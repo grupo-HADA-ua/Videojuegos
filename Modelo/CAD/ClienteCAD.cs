@@ -14,9 +14,9 @@ namespace Modelo.CAD
         private static void IniciarListaClientes()
         {
             clientes = new List<ClienteEN>();
-            clientes.Add(new ClienteEN(1, "Manu", "Manu@hada.com", "manuPassword"));
-            clientes.Add(new ClienteEN(2, "Ana", "Ana@hada.com", "anaPassword"));
-            clientes.Add(new ClienteEN(3, "Andres", "Andres@hada.com", "andresPassword"));
+            clientes.Add(new ClienteEN(1, "Manu", "Manu@hada.com", "manuPassword", "midireccion"));
+            clientes.Add(new ClienteEN(2, "Ana", "Ana@hada.com", "anaPassword", "midireccion"));
+            clientes.Add(new ClienteEN(3, "Andres", "Andres@hada.com", "andresPassword", "midireccion"));
         }
 
         public int Crear(string nombre, string email, string password)
@@ -30,7 +30,7 @@ namespace Modelo.CAD
             return new ClienteEN();
         }
 
-        public static IList<ClienteEN> ObtenerTodos()
+        public IList<ClienteEN> ObtenerTodos()
         {
             IniciarListaClientes();
             return clientes;
