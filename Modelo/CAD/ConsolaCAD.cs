@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Modelo.CAD
 {
-    class ConsolaCAD
+    class ConsolaCAD : ProductoCAD
     {
     }
 }

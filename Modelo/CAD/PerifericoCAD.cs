@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Modelo.CAD
 {
-    class PerifericoCAD
+    class PerifericoCAD : ProductoCAD
     {
     }
 }
