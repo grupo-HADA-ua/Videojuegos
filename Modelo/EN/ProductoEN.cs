@@ -6,6 +6,9 @@ using Modelo.CAD;
 
 namespace Modelo.EN
 {
+    /// <summary>
+    /// Esta clase representa a los productos de la tienda
+    /// </summary>
     public class ProductoEN
     {
         private ProductoCAD cad;
@@ -74,26 +77,46 @@ namespace Modelo.EN
             return hash;
         }
 
+        /// <summary>
+        /// Método para guardar el producto en la base de datos
+        /// </summary>
         public void Guardar()
         {
             cad.Crear(this);
         }
 
+        /// <summary>
+        /// Método para obtener un producto de la base de datos
+        /// </summary>
+        /// <param name="id">el id del producto a buscar</param>
+        /// <returns>Entidad del producto</returns>
         public ProductoEN Obtener(int id)
         {
             return cad.Obtener(id);
         }
 
+        /// <summary>
+        /// Obtiene todos los productos de la base de datos
+        /// </summary>
+        /// <returns>Lista con todos los productos</returns>
         public IList<ProductoEN> ObtenerTodos()
         {
             return cad.ObtenerTodos();
         }
 
+        /// <summary>
+        /// Método para actualizar la columna correspondiente de la base de datos
+        /// con el objeto actual
+        /// </summary>
         public void Actualizar()
         {
             cad.Actualizar(this);
         }
 
+        /// <summary>
+        /// Borra de la base de datos la columna correspondiente
+        /// al objeto actual
+        /// </summary>
         public void Borrar()
         {
             cad.Borrar(this);
