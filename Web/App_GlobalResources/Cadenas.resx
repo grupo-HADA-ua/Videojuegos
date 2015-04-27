@@ -117,7 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="catalogo" xml:space="preserve">
+    <value>Catálogo</value>
+  </data>
   <data name="NombreTienda" xml:space="preserve">
     <value>Tienda Videojuegos</value>
+  </data>
+  <data name="noticias" xml:space="preserve">
+    <value>Noticias</value>
   </data>
 </root>

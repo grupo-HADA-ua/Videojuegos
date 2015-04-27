@@ -61,11 +61,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Catálogo.
+        /// </summary>
+        internal static string catalogo {
+            get {
+                return ResourceManager.GetString("catalogo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tienda Videojuegos.
         /// </summary>
         internal static string NombreTienda {
             get {
                 return ResourceManager.GetString("NombreTienda", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Noticias.
+        /// </summary>
+        internal static string noticias {
+            get {
+                return ResourceManager.GetString("noticias", resourceCulture);
             }
         }
     }

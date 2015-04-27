@@ -15,10 +15,10 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">Catálogo</a>
+                    <a href="#"><%= Resources.Cadenas.catalogo %></a>
                 </li>
                 <li>
-                    <a href="#">Noticias</a>
+                    <a href="#"><%= Resources.Cadenas.noticias %></a>
                 </li>
             </ul>
         </div>
