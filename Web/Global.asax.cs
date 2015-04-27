@@ -42,6 +42,5 @@ namespace Web
             // o SQLServer, el evento no se genera.
 
         }
-
     }
 }

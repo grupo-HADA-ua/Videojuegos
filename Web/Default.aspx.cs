@@ -13,7 +13,7 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Session["UserId"] = "Idfake";
         }
 
         protected IList<ClienteEN> ObtenerClientes()

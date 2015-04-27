@@ -14,9 +14,6 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form runat="server">
     <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
-    
-    </form>
 </body>
 </html>
