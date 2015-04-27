@@ -8,10 +8,10 @@ namespace Modelo.EN
 {
     public class ClienteEN
     {
-        private ClienteCAD cad;
+        private IClienteCAD cad;
 
-        private int id;
-        public int Id { get { return id; } set { id = value; } }
+        private string id;
+        public string Id { get { return id; } set { id = value; } }
 
         private string nombre;
         public string Nombre { get { return nombre; } set { nombre = value; } }
@@ -30,7 +30,7 @@ namespace Modelo.EN
             cad = new ClienteCAD();
         }
 
-        public ClienteEN(int id, string nombre, string email, string password, string direccion)
+        public ClienteEN(string id, string nombre, string email, string password, string direccion)
         {
             inicializar(id, nombre, email, password, direccion);
         }
@@ -40,7 +40,7 @@ namespace Modelo.EN
             inicializar(c.Id, c.Nombre, c.Email, c.Password, c.Direccion);
         }
 
-        private void inicializar(int id, string nombre, string email, string password, string direccion)
+        private void inicializar(string id, string nombre, string email, string password, string direccion)
         {
             Id = id;
             Nombre = nombre;
