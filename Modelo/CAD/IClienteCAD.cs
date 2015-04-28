@@ -13,7 +13,7 @@ namespace Modelo.CAD
 {
     interface IClienteCAD
     {
-        int Crear(ClienteEN c);
+        void Crear(ClienteEN c);
         ClienteEN Obtener(int id);
         IList<ClienteEN> ObtenerTodos();
         void Actualizar(ClienteEN c);

@@ -16,6 +16,7 @@ namespace Web.Usuario
 
         protected void logear(object sender, EventArgs e)
         {
+            Session["UserId"] = usuario.Text;
             Response.Redirect("/Usuario/Perfil.aspx");
         }
     }

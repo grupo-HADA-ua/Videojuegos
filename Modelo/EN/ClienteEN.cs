@@ -65,9 +65,9 @@ namespace Modelo.EN
             return hash;
         }
 
-        public int Guardar()
+        public void Guardar()
         {
-            return cad.Crear(this);
+            cad.Crear(this);
         }
 
         public ClienteEN Obtener(int id)
