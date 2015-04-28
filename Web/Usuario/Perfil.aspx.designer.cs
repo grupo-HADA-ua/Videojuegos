@@ -7,9 +7,9 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Web {
+namespace Web.Usuario {
     
     
-    public partial class _Default {
+    public partial class Perfil {
     }
 }
