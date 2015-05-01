@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 
@@ -12,8 +13,23 @@ namespace Web
 
         void Application_Start(object sender, EventArgs e)
         {
-            // Código que se ejecuta al iniciarse la aplicación
+            RegisterCustomRoutes(RouteTable.Routes);
 
+        }
+
+        void RegisterCustomRoutes(RouteCollection r)
+        {
+            r.MapPageRoute(
+                "Root",
+                "",
+                "~/Default.aspx"
+            );
+
+            r.MapPageRoute(
+                "LoginUser",
+                "Login",
+                "~/Usuario/Login.aspx"
+            );
         }
 
         void Application_End(object sender, EventArgs e)

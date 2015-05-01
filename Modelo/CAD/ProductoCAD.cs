@@ -1,6 +1,8 @@
-﻿using Modelo.EN;
+﻿using Modelo.Conexion;
+using Modelo.EN;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
@@ -8,8 +10,11 @@ namespace Modelo.CAD
 {
     public class ProductoCAD : IProductoCAD
     {
+        private SqlConnection conexion;
+
         public void Crear(ProductoEN p)
         {
+            conexion = (new Conectar()).Conexion;
             //TODO
         }
 

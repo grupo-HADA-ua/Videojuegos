@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Modelo.EN;
 
 namespace Web.Usuario
 {
@@ -16,8 +17,13 @@ namespace Web.Usuario
 
         protected void logear(object sender, EventArgs e)
         {
-            Session["UserId"] = usuario.Text;
-            Response.Redirect("/Usuario/Perfil.aspx");
+            ClienteEN cliente = new ClienteEN();
+            cliente.Nombre = "Visual studio 2013";
+            cliente.Password = "Manuel";
+            cliente.Email = "manu@manu.com";
+            cliente.Direccion = "mi calle";
+            cliente.Guardar();
+            Response.Redirect("~/Default.aspx");
         }
     }
 }

@@ -16,10 +16,14 @@ namespace Modelo.CAD
 
         public ClienteCAD(string conexion = "")
         {
-            if (conexion == "") s = ConfigurationManager.ConnectionStrings["BD"].ToString();
-            else
-                s = conexion;
-
+           // if (conexion == "")
+             //   s = ConfigurationManager.ConnectionStrings["BD"].ToString();
+           // else
+            //{
+               // s = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database1.mdf;User Instance=true";
+            //}
+              //  s = conexion;
+            var s = ConfigurationManager.ConnectionStrings["DB"].ConnectionString;
             try
             {
                 BD = new SqlConnection(s);
@@ -41,7 +45,6 @@ namespace Modelo.CAD
                 BD.Open();
 
                 string com = "insert into Cliente values (";
-                com += "'" + clienteEN.Id + "', ";
                 com += "'" + clienteEN.Nombre + "', ";
                 com += "'" + clienteEN.Email + "', ";
                 com += "'" + clienteEN.Password + "', ";
@@ -80,11 +83,6 @@ namespace Modelo.CAD
                 com += "email = '" + clienteEN.Email.ToString() + "', ";
                 com += "password = '" + clienteEN.Password.ToString() + "', ";
                 com += "direccion = '" + clienteEN.Direccion.ToString() + "', ";
-
-
-
-
-
                 SqlCommand comand = new SqlCommand(com, BD);
                 comand.ExecuteNonQuery();
             }
