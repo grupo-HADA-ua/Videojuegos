@@ -24,6 +24,27 @@ namespace Modelo.EN
           { lineas = new List<LineaPedidoEN>(value); } 
         }
 
+
+        private string fecha;
+        public string Fecha { get { return fecha; } set { fecha = value; } }
+
+
+        private bool confirmado;
+        public bool Confirmado
+        {
+            get { return confirmado; }
+            set { confirmado = value; }
+        }
+
+        private bool enviado;
+        public bool Enviado
+        {
+            get { return enviado; }
+            set { enviado = value; }
+        }
+
+
+
         public PedidoEN()
         {
             Lineas = new List<LineaPedidoEN>();
@@ -32,19 +53,22 @@ namespace Modelo.EN
 
         public PedidoEN(PedidoEN p)
         {
-            inicializar(p.Id, p.IdCliente, p.Lineas);
+            inicializar(p.Id, p.IdCliente, p.Lineas,p.Fecha,p.Confirmado,p.Enviado);
         }
 
-        public PedidoEN(int id, int idCliente, IList<LineaPedidoEN> l)
+        public PedidoEN(int id, int idCliente, IList<LineaPedidoEN> l,string fecha="",bool confirmado= false, bool enviado = false)
         {
-            inicializar(id, idCliente, l);
+            inicializar(id, idCliente, l,fecha, confirmado, enviado);
         }
 
-        private void inicializar(int id, int idCliente, IList<LineaPedidoEN> l)
+        private void inicializar(int id, int idCliente, IList<LineaPedidoEN> l,string fecha="",bool confirmado= false, bool enviado = false)
         {
             Id = id;
             IdCliente = idCliente;
             Lineas = new List<LineaPedidoEN>(l);
+            Fecha = fecha;
+            Confirmado = confirmado;
+            Enviado = enviado;
             cad = new PedidoCAD();
         }
 
