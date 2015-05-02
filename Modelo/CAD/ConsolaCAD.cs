@@ -95,7 +95,7 @@ namespace Modelo.CAD
         {
             Conectar();
 
-            string orden = "delete from consola where id = " + id + ")";
+            string orden = "delete from Consola where id = " + id + ")";
 
             try
             {
@@ -117,7 +117,7 @@ namespace Modelo.CAD
         public ConsolaEN Mostrar(int id)
         {
             ProductoEN producto = new ConsolaEN();
-            CAD_Producto.cargarDatosProducto(id, producto.TipoProducto, out producto);
+            //CAD_Producto.cargarDatosProducto(id, producto.TipoProducto, out producto);
             ConsolaEN consola = (ConsolaEN)producto;
 
             Conectar();

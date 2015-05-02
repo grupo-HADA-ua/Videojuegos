@@ -8,24 +8,50 @@ namespace Modelo.EN
 {
     public class DescuentoEN
     {
+        //Atributos
+        private string cod;
+        private string fechaI;
+        private string fechaF;
+        private int descuento;
+        private List<ProductoEN> articulos;
 
-        private DescuentoCAD CAD_Descuento;
+        private DescuentoCAD CAD_descuento;
 
-        private double descuento;
-        public double Descuento { get { return descuento; } set { descuento = value; } }
-
-        public DescuentoEN() { }
-
-        public DescuentoEN(double descuento) {
-
-            Descuento = descuento;
-
+        public DescuentoEN(string cod = "", string fechaI = "", string fechaF = "", int descuento = -1)
+        {
+            this.cod = cod;
+            this.fechaI = fechaI;
+            this.fechaF = fechaF;
+            this.descuento = descuento;
+            this.articulos = new List<ProductoEN>();
         }
 
-        public DescuentoEN(DescuentoEN p) {
+        public string Cod
+        {
+            get { return cod; }
+            set { cod = value; }
+        }
+        public string FechaI
+        {
+            get { return fechaI; }
+            set { fechaI = value; }
+        }
 
-            Descuento = p.descuento;
-        
+        public string FechaF
+        {
+            get { return FechaF; }
+            set { fechaF = value; }
+        }
+
+        public int Descuento
+        {
+            get { return descuento; }
+            set { descuento = value; }
+        }
+
+        public List<ProductoEN> Articulo
+        {
+            get { return articulos; }
         }
 
         //METODOS
@@ -33,57 +59,56 @@ namespace Modelo.EN
 
         public void crearCad()
         {
-            if (CAD_Descuento == null)
-                CAD_Descuento = new DescuentoCAD();
+            if (CAD_descuento == null)
+                CAD_descuento = new DescuentoCAD();
         }
 
-        //Inserta un Descuento en la bbdd
-        public void crearDescuento()
+        //Inserta una oferta en la bbdd
+        public void Crear()
         {
             crearCad();
             try
             {
-                //CAD_Descuento.crearDescuento(this);
+                CAD_descuento.Crear(this);
             }
             catch (Exception)
             {
-                Console.Write("Error al insertar un Descuento: %s\n");
+                Console.Write("Error al insertar un descuento: %s\n");
             }
         }
 
-        //Actualiza un Descuento en la bbdd
-        public void actualizarDescuento()
+        //Actualiza una oferta en la bbdd
+        public void Actualizar()
         {
             crearCad();
             try
             {
-               // CAD_Descuento.actualizarDescuento(this);
+                CAD_descuento.Actualizar(this);
             }
             catch (Exception)
             {
-                Console.Write("Error al actualizar un Descuento: %s\n");
+                Console.Write("Error al actualizar un descuento: %s\n");
             }
         }
 
-        //Borrar una Descuento en la bbdd
-        public void borrarDescuento()
+        //Borrar una oferta en la bbdd
+        public void Borrar()
         {
             crearCad();
             try
             {
-               // CAD_Descuento.borrarOferta(this.descuento);
+                CAD_descuento.Borrar(this.cod);
             }
             catch (Exception)
             {
-                Console.Write("Error al borrar un Descuento: %s\n");
+                Console.Write("Error al borrar un descuento: %s\n");
             }
         }
 
-        //Mostrar Descuento de la bbdd
-        public DescuentoEN mostrarDescuento()
+        //Mostrar oferta de la bbdd
+        public DescuentoEN Mostrar()
         {
-           // return CAD_Descuento.mostrarDescuento(this.descuento);
-            return null;
+            return CAD_descuento.Mostrar(this.Cod);
         }
     }
 }
