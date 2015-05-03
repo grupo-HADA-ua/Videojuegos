@@ -30,6 +30,18 @@ namespace Web
                 "Login",
                 "~/Usuario/Login.aspx"
             );
+
+            r.MapPageRoute(
+                "RegistroCliente",
+                "Registro",
+                "~/Usuario/Registro.aspx"
+            );
+
+            r.MapPageRoute(
+                "PerfilCliente",
+                "Perfil",
+                "~/Usuario/Perfil.aspx"
+            );
         }
 
         void Application_End(object sender, EventArgs e)

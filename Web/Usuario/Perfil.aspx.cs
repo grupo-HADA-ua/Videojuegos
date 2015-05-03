@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelo.EN;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,10 +15,10 @@ namespace Web.Usuario
 
         }
 
-        public string getUsuarioActual()
+        public ClienteEN getUsuarioActual()
         {
-            string UserId = (string) Session["UserId"];
-            return UserId;
+            var c = (ClienteEN) Session["Cliente"];
+            return c;
         }
     }
 }

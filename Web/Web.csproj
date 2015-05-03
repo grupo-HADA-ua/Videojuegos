@@ -79,6 +79,7 @@
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="Bootstrap\js\jquery-1.11.2.js" />
     <Content Include="Bootstrap\js\npm.js" />
+    <Content Include="Desarrollo\IniciarBD.aspx" />
     <Content Include="Styles\Estilos.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
@@ -146,6 +147,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Desarrollo\IniciarBD.aspx.cs">
+      <DependentUpon>IniciarBD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Desarrollo\IniciarBD.aspx.designer.cs">
+      <DependentUpon>IniciarBD.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

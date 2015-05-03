@@ -13,5 +13,12 @@ namespace Web
         {
 
         }
+
+        protected void Salir(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("~/");
+        }
     }
 }

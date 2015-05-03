@@ -15,15 +15,43 @@ namespace Web.Usuario
 
         }
 
-        protected void logear(object sender, EventArgs e)
+        protected void Logear(object sender, EventArgs e)
         {
-            ClienteEN cliente = new ClienteEN();
-            cliente.Nombre = "A salvo de sql injection";
-            cliente.Password = "Manuel";
-            cliente.Email = "manu@manu.com";
-            cliente.Direccion = "mi calle";
-            cliente.Guardar();
-            Response.Redirect("~/Default.aspx");
+            var c = new ClienteEN();
+            c.Email = Email.Text;
+            c.Password = Password.Text;
+            Session.Add("Cliente", null);
+            if (LoginCorrecto(Email.Text, Password.Text))
+            {
+                Session.Add("Cliente", c.Obtener());
+                Response.Redirect("Perfil");
+            }
+            Response.Redirect("Login");
+            
+        }
+
+        protected void ComprobarDatos(object sender, ServerValidateEventArgs e)
+        {
+            e.IsValid = false;
+            var c = new ClienteEN();
+            c.Email = Email.Text;
+            c.Password = Password.Text;
+            if (c.LoginCorrecto())
+            {
+                e.IsValid = true;
+            }
+        }
+
+        private bool LoginCorrecto(string email, string password)
+        {
+            var c = new ClienteEN();
+            c.Email = email;
+            c.Password = password;
+            if (c.LoginCorrecto())
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

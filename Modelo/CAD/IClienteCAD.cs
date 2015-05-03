@@ -14,10 +14,12 @@ namespace Modelo.CAD
     interface IClienteCAD
     {
         void Crear(ClienteEN c);
-        ClienteEN Obtener(int id);
+        ClienteEN Obtener(ClienteEN c);
         IList<ClienteEN> ObtenerTodos();
         void Actualizar(ClienteEN c);
         void Borrar(ClienteEN c);
         bool Existe(ClienteEN c);
+        void BorrarTodos();
+        bool LoginCorrecto(ClienteEN c);
     }
 }

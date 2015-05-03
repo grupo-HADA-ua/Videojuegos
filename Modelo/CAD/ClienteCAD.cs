@@ -73,9 +73,78 @@ namespace Modelo.CAD
             return existe;
         }
 
-        public ClienteEN Obtener(int id)
+        public bool LoginCorrecto(ClienteEN c) {
+            bool datos = false;
+            try{
+                conexion.Open();
+                var sql = "SELECT email, password FROM Cliente WHERE email LIKE @email AND password LIKE @password;";
+                var cmd = new SqlCommand(sql, conexion);
+                cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = c.Email;
+                cmd.Parameters.Add("@password", SqlDbType.VarChar).Value = c.Password;
+                var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    datos = true;
+                }
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return datos;
+        }
+
+        public void BorrarTodos()
         {
-            return null;
+            try
+            {
+                conexion.Open();
+                var sql = "TRUNCATE TABLE Cliente;";
+                var cmd = new SqlCommand(sql, conexion);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
+        public ClienteEN Obtener(ClienteEN c)
+        {
+            try
+            {
+                conexion.Open();
+                var sql = "SELECT id, nombre, email, password, direccion FROM Cliente WHERE " +
+                    "email LIKE @email;";
+                var cmd = new SqlCommand(sql, conexion);
+                cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = c.Email;
+                var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    c.Id = reader["id"].ToString();
+                    c.Nombre = reader["nombre"].ToString();
+                    c.Email = reader["email"].ToString();
+                    c.Password = reader["email"].ToString();
+                    c.Direccion = reader["direccion"].ToString();
+                }
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return c;
         }
         
 

@@ -2,7 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <form runat="server">
         <div>
         Nombre de usuario: <asp:TextBox  ID="Nombre" type="text" runat="server" />
             <asp:RequiredFieldValidator ErrorMessage="Introduce nombre de usuario" 
@@ -46,5 +45,4 @@
 
         <asp:Button Text="Registrarse" OnClick="Registrarse" runat="server" /><br />
         </div>
-    </form>    
 </asp:Content>

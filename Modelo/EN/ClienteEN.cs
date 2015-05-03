@@ -34,6 +34,14 @@ namespace Modelo.EN
             inicializar(id, nombre, email, password, direccion);
         }
 
+        public ClienteEN(string nombre, string email, string password, string direccion)
+        {
+            Nombre = nombre;
+            Email = email;
+            Password = password;
+            Direccion = direccion;
+        }
+
         public ClienteEN(ClienteEN c)
         {
             inicializar(c.Id, c.Nombre, c.Email, c.Password, c.Direccion);
@@ -68,10 +76,15 @@ namespace Modelo.EN
             cad.Crear(this);
         }
 
-        public ClienteEN Obtener(int id)
+        public ClienteEN Obtener()
         {
-            return cad.Obtener(id);
+            return cad.Obtener(this);
 
+        }
+
+        public bool LoginCorrecto()
+        {
+            return cad.LoginCorrecto(this);
         }
 
         public IList<ClienteEN> ObtenerTodos()
@@ -87,6 +100,11 @@ namespace Modelo.EN
         public void Borrar()
         {
             cad.Borrar(this);
+        }
+
+        public void BorrarTodos()
+        {
+            cad.BorrarTodos();
         }
 
         public bool Existe()
