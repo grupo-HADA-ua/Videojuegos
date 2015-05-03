@@ -88,6 +88,7 @@
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Usuario\Login.aspx" />
     <Content Include="Usuario\Perfil.aspx" />
+    <Content Include="Usuario\Registro.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -171,6 +172,13 @@
     </Compile>
     <Compile Include="Usuario\Perfil.aspx.designer.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario\Registro.aspx.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuario\Registro.aspx.designer.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

@@ -8,7 +8,7 @@ namespace Modelo.EN
 {
     public class ClienteEN
     {
-        private IClienteCAD cad;
+        private IClienteCAD cad = new ClienteCAD();
 
         private string id;
         public string Id { get { return id; } set { id = value; } }
@@ -27,7 +27,6 @@ namespace Modelo.EN
 
         public ClienteEN()
         {
-            cad = new ClienteCAD();
         }
 
         public ClienteEN(string id, string nombre, string email, string password, string direccion)
@@ -47,7 +46,6 @@ namespace Modelo.EN
             Email = email;
             Password = password;
             Direccion = direccion;
-            cad = new ClienteCAD();
         }
 
         public override bool Equals(Object obj)
@@ -89,6 +87,11 @@ namespace Modelo.EN
         public void Borrar()
         {
             cad.Borrar(this);
+        }
+
+        public bool Existe()
+        {
+            return cad.Existe(this);
         }
          
     }

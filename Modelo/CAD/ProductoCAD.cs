@@ -11,6 +11,7 @@ namespace Modelo.CAD
     public class ProductoCAD : IProductoCAD
     {
         private SqlConnection conexion;
+        private string s;
 
         public void Crear(ProductoEN p)
         {

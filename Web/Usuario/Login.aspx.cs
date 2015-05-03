@@ -18,7 +18,7 @@ namespace Web.Usuario
         protected void logear(object sender, EventArgs e)
         {
             ClienteEN cliente = new ClienteEN();
-            cliente.Nombre = "Visual studio 2013";
+            cliente.Nombre = "A salvo de sql injection";
             cliente.Password = "Manuel";
             cliente.Email = "manu@manu.com";
             cliente.Direccion = "mi calle";

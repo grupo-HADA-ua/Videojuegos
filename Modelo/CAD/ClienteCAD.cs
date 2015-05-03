@@ -3,66 +3,74 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Configuration;
 using Modelo.EN;
-
+using Modelo.Conexion;
+using System.Data;
 
 namespace Modelo.CAD
 {
     public class ClienteCAD : IClienteCAD
     {
-        private SqlConnection BD;
-        private string s;
+        private Conectar conectar;
+        private SqlConnection conexion; 
 
-
-
-        public ClienteCAD(string conexion = "")
+        public ClienteCAD()
         {
-           // if (conexion == "")
-             //   s = ConfigurationManager.ConnectionStrings["BD"].ToString();
-           // else
-            //{
-               // s = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database1.mdf;User Instance=true";
-            //}
-              //  s = conexion;
-            var s = ConfigurationManager.ConnectionStrings["DB"].ConnectionString;
-            try
-            {
-                BD = new SqlConnection(s);
-            }
-            catch (Exception e)
-            {
-                e.ToString();
-            }
+            conectar = new Conectar();
+            conexion = conectar.Conexion;
         }
 
         //METODOS
         //CRUD
 
         //Insertar un usuario en la bbdd
-        public void Crear(ClienteEN clienteEN)
+        public void Crear(ClienteEN c)
         {
             try
             {
-                BD.Open();
-
-                string com = "insert into Cliente values (";
-                com += "'" + clienteEN.Nombre + "', ";
-                com += "'" + clienteEN.Email + "', ";
-                com += "'" + clienteEN.Password + "', ";
-                com += "'" + clienteEN.Direccion + "') ";
-                SqlCommand comand = new SqlCommand(com, BD);
-                //int index= comand.ExecuteNonQuery();
-                comand.ExecuteNonQuery();
-
-            }
+                conexion.Open();
+                string sql = "INSERT INTO cliente(nombre, email, password, direccion) values (@nombre, @email, @password, @direccion);";
+                SqlCommand cmd = new SqlCommand(sql, conexion);
+                cmd.Parameters.Add("@nombre", SqlDbType.VarChar).Value = c.Nombre;
+                cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = c.Email;
+                cmd.Parameters.Add("@password", SqlDbType.VarChar).Value = c.Password;
+                cmd.Parameters.Add("@direccion", SqlDbType.VarChar).Value = c.Direccion;
+                cmd.ExecuteNonQuery();
+            } 
             catch (Exception e)
             {
                 e.ToString();
             }
             finally
             {
-
-                BD.Close();
+                conexion.Close();
             }
+        }
+
+        public bool Existe(ClienteEN c)
+        {
+            bool existe = false;
+            try
+            {
+                conexion.Open();
+                var sql = "SELECT email FROM Cliente WHERE email LIKE @email;";
+                var cmd = new SqlCommand(sql, conexion);
+                cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = c.Email;
+                var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    existe = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return existe;
         }
 
         public ClienteEN Obtener(int id)
@@ -76,14 +84,14 @@ namespace Modelo.CAD
         {
             try
             {
-                BD.Open();
+                conexion.Open();
                 string com = "update Cliente set ";
                 com += "id = '" + clienteEN.Id.ToString() + "', ";
                 com += "nombre = '" + clienteEN.Nombre.ToString() + "', ";
                 com += "email = '" + clienteEN.Email.ToString() + "', ";
                 com += "password = '" + clienteEN.Password.ToString() + "', ";
                 com += "direccion = '" + clienteEN.Direccion.ToString() + "', ";
-                SqlCommand comand = new SqlCommand(com, BD);
+                SqlCommand comand = new SqlCommand(com, conexion);
                 comand.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -92,7 +100,7 @@ namespace Modelo.CAD
             }
             finally
             {
-                BD.Close();
+                conexion.Close();
             }
         }
 
@@ -101,10 +109,10 @@ namespace Modelo.CAD
         {
             try
             {
-                BD.Open();
+                conexion.Open();
                 string com = "delete from Cliente where id = '" + c.Id + "'";
 
-                SqlCommand comand = new SqlCommand(com, BD);
+                SqlCommand comand = new SqlCommand(com, conexion);
                 comand.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -113,7 +121,7 @@ namespace Modelo.CAD
             }
             finally
             {
-                BD.Close();
+                conexion.Close();
             }
         }
 
@@ -121,13 +129,13 @@ namespace Modelo.CAD
         public void cargarDatoscliente(string id, out ClienteEN cliente)
         {
             cliente = new ClienteEN();
-            BD.Open();
+            conexion.Open();
 
             string orden = "select * from Cliente where id = " + id + ";";
 
             try
             {
-                SqlCommand comando = new SqlCommand(orden, BD);
+                SqlCommand comando = new SqlCommand(orden, conexion);
                 SqlDataReader reader = comando.ExecuteReader();
 
                 if (reader.Read())
@@ -147,7 +155,7 @@ namespace Modelo.CAD
             }
             finally
             {
-                BD.Close();
+                conexion.Close();
             }
         }
 
@@ -158,11 +166,11 @@ namespace Modelo.CAD
 
             try
             {
-                BD.Open();
+                conexion.Open();
 
                 string com = "select * from Cliente where email = '" + id + "';";
 
-                SqlCommand comand = new SqlCommand(com, BD);
+                SqlCommand comand = new SqlCommand(com, conexion);
                 SqlDataReader reader = comand.ExecuteReader();
 
                 if (reader.Read())
@@ -182,7 +190,7 @@ namespace Modelo.CAD
             }
             finally
             {
-                BD.Close();
+                conexion.Close();
             }
 
             return cliente;
@@ -201,11 +209,11 @@ namespace Modelo.CAD
 
             try
             {
-                BD.Open();
+                conexion.Open();
 
                 string com = "select id from Cliente";
 
-                SqlCommand comand = new SqlCommand(com, BD);
+                SqlCommand comand = new SqlCommand(com, conexion);
                 SqlDataReader reader = comand.ExecuteReader();
 
                 while (reader.Read())
@@ -219,7 +227,7 @@ namespace Modelo.CAD
             }
             finally
             {
-                BD.Close();
+                conexion.Close();
             }
 
             return ids;

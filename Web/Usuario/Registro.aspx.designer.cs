@@ -10,33 +10,51 @@
 namespace Web.Usuario {
     
     
-    public partial class Login {
+    public partial class Registro {
         
         /// <summary>
-        /// loginUsuario control.
+        /// Nombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm loginUsuario;
+        protected global::System.Web.UI.WebControls.TextBox Nombre;
         
         /// <summary>
-        /// usuario control.
+        /// Email control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox usuario;
+        protected global::System.Web.UI.WebControls.TextBox Email;
         
         /// <summary>
-        /// password control.
+        /// Password control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox password;
+        protected global::System.Web.UI.WebControls.TextBox Password;
+        
+        /// <summary>
+        /// PasswordConfirmation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox PasswordConfirmation;
+        
+        /// <summary>
+        /// Direccion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Direccion;
     }
 }

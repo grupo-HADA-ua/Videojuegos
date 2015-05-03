@@ -18,5 +18,6 @@ namespace Modelo.CAD
         IList<ClienteEN> ObtenerTodos();
         void Actualizar(ClienteEN c);
         void Borrar(ClienteEN c);
+        bool Existe(ClienteEN c);
     }
 }
