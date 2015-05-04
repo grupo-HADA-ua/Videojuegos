@@ -11,12 +11,12 @@ namespace Modelo.EN
     /// </summary>
     public class ProductoEN
     {
-        private ProductoCAD cad;
+        private IProductoCAD cad;
 
         private bool descuento;
         public bool Descuento { get { return descuento; } set { descuento = value; } }
 
-        private DescuentoEN descontar = new DescuentoEN(0.0);
+        private DescuentoEN descontar;
 
         private string nombre;
         public string Nombre { get { return nombre; } set { nombre = value; } }
