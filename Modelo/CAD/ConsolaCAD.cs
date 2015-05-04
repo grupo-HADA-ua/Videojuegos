@@ -10,12 +10,12 @@ namespace Modelo.CAD
     {
         private SqlConnection BD;
         private string cadena;
-        private ProductoCAD CAD_Producto;
+        //private ProductoCAD CAD_Producto;
 
         //Constructor
         public ConsolaCAD(string bbdd = "")
         {
-            if (bbdd == "") cadena = ConfigurationManager.ConnectionStrings["BD"].ToString();
+            if (bbdd == "") cadena = ConfigurationManager.ConnectionStrings[""].ToString();
             else cadena = bbdd;
 
             try
@@ -117,7 +117,7 @@ namespace Modelo.CAD
         public ConsolaEN Mostrar(int id)
         {
             ProductoEN producto = new ConsolaEN();
-            CAD_Producto.cargarDatosProducto(id, producto.TipoProducto, out producto);
+            // CAD_Producto.cargarDatosProducto(id, producto.TipoProducto, out producto);
             ConsolaEN consola = (ConsolaEN)producto;
 
             Conectar();

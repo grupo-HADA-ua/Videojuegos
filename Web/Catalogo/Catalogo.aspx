@@ -7,46 +7,91 @@
 
     <div class="row">
         <div class="col-md-4">
-             <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" /><br />
-            <asp:Label Text="Watch Dogs" runat="server" />
+            <a href="~/Catalogo/Detalles.aspx" runat="server">
+                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
+            </a>
+            <label>Watch Dogs</label>
+            <label>19.99€</label>
+            <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
+            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
         </div>
         <div class="col-md-4">
-             <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" /><br />
-            <asp:Label Text="Watch Dogs" runat="server" />
+            <a href="~/Catalogo/Detalles.aspx" runat="server">
+                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
+            </a>
+            <label>Watch Dogs</label>
+            <label>19.99€</label>
+            <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
+            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
         </div>
         <div class="col-md-4">
-             <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" /><br />
-            <asp:Label Text="Watch Dogs" runat="server" />
+            <a href="~/Catalogo/Detalles.aspx" runat="server">
+                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
+            </a>
+            <label>Watch Dogs</label>
+            <label>19.99€</label>
+            <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
+            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-4">
-             <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" /><br />
-            <asp:Label Text="Watch Dogs" runat="server" />
+            <a href="~/Catalogo/Detalles.aspx" runat="server">
+                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
+            </a>
+            <label>Watch Dogs</label>
+            <label>19.99€</label>
+            <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
+            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
         </div>
         <div class="col-md-4">
-             <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" /><br />
-            <asp:Label Text="Watch Dogs" runat="server" />
+            <a href="~/Catalogo/Detalles.aspx" runat="server">
+                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
+            </a>
+            <label>Watch Dogs</label>
+            <label>19.99€</label>
+            <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
+            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
         </div>
         <div class="col-md-4">
-             <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" /><br />
-            <asp:Label Text="Watch Dogs" runat="server" />
+            <a href="~/Catalogo/Detalles.aspx" runat="server">
+                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
+            </a>
+            <label>Watch Dogs</label>
+            <label>19.99€</label>
+            <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
+            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-4">
-             <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" /><br />
-            <asp:Label Text="Watch Dogs" runat="server" />
+            <a href="~/Catalogo/Detalles.aspx" runat="server">
+                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
+            </a>
+            <label>Watch Dogs</label>
+            <label>19.99€</label>
+            <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
+            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
         </div>
         <div class="col-md-4">
-             <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" /><br />
-            <asp:Label Text="Watch Dogs" runat="server" />
+            <a href="~/Catalogo/Detalles.aspx" runat="server">
+                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
+            </a>
+            <label>Watch Dogs</label>
+            <label>19.99€</label>
+            <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
+            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
         </div>
         <div class="col-md-4">
-             <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" /><br />
-            <asp:Label Text="Watch Dogs" runat="server" />
+            <a href="~/Catalogo/Detalles.aspx" runat="server">
+                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
+            </a>
+            <label>Watch Dogs</label>
+            <label>19.99€</label>
+
+            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
         </div>
     </div>
 </asp:Content>

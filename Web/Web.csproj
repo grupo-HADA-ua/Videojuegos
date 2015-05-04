@@ -80,6 +80,7 @@
     <Content Include="Bootstrap\js\jquery-1.11.2.js" />
     <Content Include="Bootstrap\js\npm.js" />
     <Content Include="Catalogo\Catalogo.aspx" />
+    <Content Include="Catalogo\Detalles.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Desarrollo\IniciarBD.aspx" />
     <Content Include="Imagenes\WatchDogs.jpg" />
@@ -157,6 +158,13 @@
     </Compile>
     <Compile Include="Catalogo\Catalogo.aspx.designer.cs">
       <DependentUpon>Catalogo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogo\Detalles.aspx.cs">
+      <DependentUpon>Detalles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Detalles.aspx.designer.cs">
+      <DependentUpon>Detalles.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contacto.aspx.cs">
       <DependentUpon>Contacto.aspx</DependentUpon>

@@ -77,7 +77,7 @@ namespace Modelo.CAD
             bool datos = false;
             try{
                 conexion.Open();
-                var sql = "SELECT email, password FROM Cliente WHERE email LIKE @email AND password LIKE @password;";
+                var sql = "SELECT email, password FROM Cliente WHERE email=@email AND password=@password;";
                 var cmd = new SqlCommand(sql, conexion);
                 cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = c.Email;
                 cmd.Parameters.Add("@password", SqlDbType.VarChar).Value = c.Password;
