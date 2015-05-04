@@ -42,6 +42,12 @@ namespace Web
                 "Perfil",
                 "~/Usuario/Perfil.aspx"
             );
+
+            r.MapPageRoute(
+                "News",
+                "News",
+                "~/Noticias/Noticias.aspx"
+            );
         }
 
         void Application_End(object sender, EventArgs e)

@@ -4,5 +4,5 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <a href="~/Usuario/Perfil.aspx" runat="server">Perfil de Usuario</a>
+    Aqui va el contenido principal
 </asp:Content>

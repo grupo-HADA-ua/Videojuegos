@@ -79,7 +79,11 @@
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="Bootstrap\js\jquery-1.11.2.js" />
     <Content Include="Bootstrap\js\npm.js" />
+    <Content Include="Catalogo\Catalogo.aspx" />
+    <Content Include="Contacto.aspx" />
     <Content Include="Desarrollo\IniciarBD.aspx" />
+    <Content Include="Imagenes\WatchDogs.jpg" />
+    <Content Include="Noticias\Noticias.aspx" />
     <Content Include="Styles\Estilos.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
@@ -87,6 +91,12 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Styles\Style.css">
+      <DependentUpon>Style.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Style.min.css">
+      <DependentUpon>Style.css</DependentUpon>
+    </Content>
     <Content Include="Usuario\Login.aspx" />
     <Content Include="Usuario\Perfil.aspx" />
     <Content Include="Usuario\Registro.aspx" />
@@ -141,6 +151,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Cadenas.resx</DependentUpon>
     </Compile>
+    <Compile Include="Catalogo\Catalogo.aspx.cs">
+      <DependentUpon>Catalogo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogo\Catalogo.aspx.designer.cs">
+      <DependentUpon>Catalogo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contacto.aspx.cs">
+      <DependentUpon>Contacto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contacto.aspx.designer.cs">
+      <DependentUpon>Contacto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -157,6 +181,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Noticias\Noticias.aspx.cs">
+      <DependentUpon>Noticias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Noticias\Noticias.aspx.designer.cs">
+      <DependentUpon>Noticias.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionHelper.cs" />
@@ -207,6 +238,10 @@
     <None Include="Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <None Include="Bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Styles\Style.scss" />
+    <Content Include="Styles\Style.css.map">
+      <DependentUpon>Style.css</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\Cadenas.resx">
