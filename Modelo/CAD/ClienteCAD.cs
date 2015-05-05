@@ -3,31 +3,22 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Configuration;
 using Modelo.EN;
-
+using Modelo.Conexion;
+using System.Data;
 
 namespace Modelo.CAD
 {
     public class ClienteCAD : IClienteCAD
     {
         private SqlConnection BD;
-        private string s;
+        private Conectar conectar;
 
 
 
-        public ClienteCAD(string conexion = "")
+        public ClienteCAD()
         {
-            if (conexion == "") s = ConfigurationManager.ConnectionStrings["BD"].ToString();
-            else
-                s = conexion;
-
-            try
-            {
-                BD = new SqlConnection(s);
-            }
-            catch (Exception e)
-            {
-                e.ToString();
-            }
+            conectar = new Conectar();
+            BD = conectar.Conexion;
         }
 
         //METODOS

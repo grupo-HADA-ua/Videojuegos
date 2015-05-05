@@ -4,31 +4,24 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using Modelo.EN;
+using Modelo.Conexion;
 
 
 namespace Modelo.CAD
 {
     class PedidoCAD : IPedidoCAD
     {
-        private SqlConnection BD; /*Cambiar string por el tipo de dato de las bbdd*/
-        private string s;
+       private SqlConnection BD;
+       private Conectar conectar;
 
-        //Constructor
-        public PedidoCAD(string bbdd = "")
+
+
+       public PedidoCAD()
         {
-            if (bbdd == "") s = ConfigurationManager.ConnectionStrings["BD"].ToString();
-            else s = bbdd;
-
-            try
-            {
-                BD = new SqlConnection(s);
-            }
-            catch (Exception e)
-            {
-                e.ToString();
-            }
+            conectar = new Conectar();
+            BD = conectar.Conexion;
         }
-
+ 
         //Metodo para crear un pedido en la bbdd
         public void Crear(PedidoEN pedidoEN)
         {

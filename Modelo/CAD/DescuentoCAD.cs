@@ -3,28 +3,21 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Configuration;
 using Modelo.EN;
+using Modelo.Conexion;
 
 namespace Modelo.CAD
 {
     class DescuentoCAD
     {
         private SqlConnection BD;
-        private string cadena;
+        private Conectar conectar;
 
-        //Constructor
-        public DescuentoCAD(string bbdd = "")
+
+
+        public DescuentoCAD()
         {
-            if (bbdd == "") cadena = ConfigurationManager.ConnectionStrings["BD"].ToString();
-            else cadena = bbdd;
-
-            try
-            {
-                BD = new SqlConnection(cadena);
-            }
-            catch (Exception e)
-            {
-                e.ToString();
-            }
+            conectar = new Conectar();
+            BD = conectar.Conexion;
         }
 
         public void Crear(DescuentoEN descuentoEN)

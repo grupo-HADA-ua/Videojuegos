@@ -3,28 +3,23 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Configuration;
 using Modelo.EN;
+using Modelo.Conexion;
+
 namespace Modelo.CAD
 {
     class VideojuegoCAD : ProductoCAD
     {
-        private SqlConnection BD;
-        private string cadena;
+         
         private ProductoCAD CAD_Producto;
+        private SqlConnection BD;
+        private Conectar conectar;
 
-        //Constructor
-        public VideojuegoCAD(string bbdd = "")
+
+
+        public VideojuegoCAD()
         {
-            if (bbdd == "") cadena = ConfigurationManager.ConnectionStrings["BD"].ToString();
-            else cadena = bbdd;
-
-            try
-            {
-                BD = new SqlConnection(cadena);
-            }
-            catch (Exception e)
-            {
-                e.ToString();
-            }
+            conectar = new Conectar();
+            BD = conectar.Conexion;
         }
 
         //METODOS
