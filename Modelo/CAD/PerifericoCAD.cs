@@ -62,7 +62,7 @@ namespace Modelo.CAD
             }
         }
 
-        //Actualiza un movil en la bbdd
+        
         public void Actualizar(PerifericoEn perifericoEN)
         {
             Conectar();
@@ -88,7 +88,7 @@ namespace Modelo.CAD
             }
         }
 
-        //Metodo para borrar un movil de la bddd
+        
         public void Borrar(int p)
         {
             BorrarConsola(p.ToString());
@@ -115,11 +115,11 @@ namespace Modelo.CAD
             }
         }
 
-        //Metodo para mostrar un movil de la bbdd
+        
         public PerifericoEn Mostrar(int id)
         {
             ProductoEN producto = new PerifericoEn();
-            //CAD_Producto.cargarDatosProducto(id, producto.TipoProducto, out producto);
+            CAD_Producto.Cargar(id, producto.TipoProducto, out producto);
             PerifericoEn periferico = (PerifericoEn)producto;
 
             Conectar();
@@ -150,7 +150,7 @@ namespace Modelo.CAD
             return periferico;
         }
 
-        //Metodos para conectar y desconectar de la bbdd
+       
         private void Conectar()
         {
             if (BD.State != System.Data.ConnectionState.Open)

@@ -167,7 +167,6 @@ namespace Modelo.CAD
                 if (reader.Read())
                 {
                     pedido.Id = (int)reader["id"];
-                   // pedido.IdCliente = (new ClienteCAD(s)).leercliente(reader["idcliente"].ToString());
                     pedido.Fecha = reader["fecha"].ToString();
 
                     //Los pedidos confirmados no se dejan editar
@@ -286,7 +285,7 @@ namespace Modelo.CAD
                 if (reader.Read())
                 {
                     pedido.Id = (int)reader["id"];
-                    //pedido.IdCliente = (new ClienteCAD(s)).leercliente(reader["id"].ToString());
+                    
 
                     pedido.Enviado = bool.Parse(reader["enviado"].ToString());
 
@@ -315,7 +314,7 @@ namespace Modelo.CAD
         private PedidoEN newCarrito(string user)
         {
             PedidoEN pedido = new PedidoEN();
-           // pedido.IdCliente = (new ClienteCAD(s)).leercliente(user);
+          
             pedido.Confirmado = pedido.Enviado = false;
 
 
@@ -330,7 +329,7 @@ namespace Modelo.CAD
                 if (reader.Read())
                 {
                     pedido.Id = ((int)reader["m"]) + 1;
-                   // pedido.Crear();
+                   
                 }
 
                 reader.Close();

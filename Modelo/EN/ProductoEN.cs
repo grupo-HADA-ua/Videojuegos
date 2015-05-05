@@ -38,6 +38,11 @@ namespace Modelo.EN
         private int id;
         public int Id { get { return id; } set { id = value; } }
 
+        public abstract string TipoProducto
+        {
+            get;
+        }
+
          public ProductoEN()
         {
             cad = new ProductoCAD();

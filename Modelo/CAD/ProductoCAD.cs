@@ -63,7 +63,7 @@ namespace Modelo.CAD
 
         }
 
-        //Metodo para actualizar un articulo
+       
         public void Actualizar(ProductoEN productoEn)
         {
             Conectar();
@@ -91,7 +91,7 @@ namespace Modelo.CAD
 
         }
 
-        //Metodo para borrar un articulo
+        
         public void Borrar(int p)
         {
             BorrarProducto(p.ToString());
@@ -122,7 +122,7 @@ namespace Modelo.CAD
         {
             ProductoEN producto = (new ConsolaCAD()).Mostrar(p);
 
-            //Si al cargar el movil ha fallado es otro tipo de articulo
+            
             if (producto.Id != p) producto = (new PerifericoCAD()).Mostrar(p);
             if (producto.Id != p) producto = (new VideojuegoCAD()).Mostrar(p);
             
@@ -131,7 +131,7 @@ namespace Modelo.CAD
 
         }
 
-        //Se llamará desde las clases derivadas y cargará los datos de la tabla articulo
+        
         public void Cargar(int cod, string tipo, out ProductoEN producto)
         {
             switch (tipo)

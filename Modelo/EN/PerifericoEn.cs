@@ -60,11 +60,11 @@ namespace Modelo.EN
             crearCad();
             try
             {
-               // CAD_Periferico.crearPeriferico(this);
+                CAD_Periferico.Crear(this);
             }
             catch (Exception)
             {
-                Console.Write("Error al insertar el articulo: %s\n");
+                Console.Write("Error al insertar un periferico: %s\n");
             }
         }
 
@@ -73,11 +73,11 @@ namespace Modelo.EN
             crearCad();
             try
             {
-               // CAD_Periferico.actualizarPeriferico(this);
+                CAD_Periferico.Actualizar(this);
             }
             catch (Exception)
             {
-                Console.Write("Error al actualizar el articulo: %s\n");
+                Console.Write("Error al insertar un periferico: %s\n");
             }
         }
 
@@ -85,13 +85,13 @@ namespace Modelo.EN
         {
             if (CAD_Periferico == null) CAD_Periferico = new PerifericoCAD();
 
-           // CAD_Periferico.borrarPeriferico(this.id);
+            CAD_Periferico.Borrar(this.Id);
         }
 
         public PerifericoEn mostrarPeriferico()
         {
-            //return CAD_Periferico.mostrarPeriferico(this.id);
-            return null;
+            return CAD_Periferico.Mostrar(this.Id);
+            
         }
 
     }

@@ -33,7 +33,7 @@ namespace Modelo.CAD
         //METODOS
         //CRUD
 
-        //Insertar un usuario en la bbdd
+
         public void Crear(ClienteEN clienteEN)
         {
             try
@@ -47,7 +47,7 @@ namespace Modelo.CAD
                 com += "'" + clienteEN.Password + "', ";
                 com += "'" + clienteEN.Direccion + "') ";
                 SqlCommand comand = new SqlCommand(com, BD);
-                //int index= comand.ExecuteNonQuery();
+                int index= comand.ExecuteNonQuery();
                 comand.ExecuteNonQuery();
 
             }
@@ -68,7 +68,7 @@ namespace Modelo.CAD
         }
         
 
-        //Actualizar un usuario en la bbdd
+   
         public void Actualizar(ClienteEN clienteEN)
         {
             try
@@ -98,7 +98,7 @@ namespace Modelo.CAD
             }
         }
 
-        //borrar un usuario de la bbdd
+      
         public void Borrar(ClienteEN c)
         {
             try
@@ -119,7 +119,7 @@ namespace Modelo.CAD
             }
         }
 
-        //Se llamará desde las clases derivadas y cargará los datos de la tabla articulo
+
         public void cargarDatoscliente(string id, out ClienteEN cliente)
         {
             cliente = new ClienteEN();
@@ -153,7 +153,7 @@ namespace Modelo.CAD
             }
         }
 
-        //Leemos un usuario en la base de datos pasandole el nick puesto que es único
+  
         public ClienteEN leercliente(string id)
         {
             ClienteEN cliente = new ClienteEN();

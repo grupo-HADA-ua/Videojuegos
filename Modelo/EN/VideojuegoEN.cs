@@ -71,7 +71,7 @@ namespace Modelo.EN
             crearCad();
             try
             {
-               // CAD_Videojuego.crearVideojuego(this);
+                CAD_Videojuego.Crear(this);
             }
             catch (Exception)
             {
@@ -86,7 +86,7 @@ namespace Modelo.EN
 
             try
             {
-               // CAD_Videojuego.actualizarVideojuego(this);
+                CAD_Videojuego.Actualizar(this);
             }
             catch (Exception)
             {
@@ -99,14 +99,14 @@ namespace Modelo.EN
         {
             if (CAD_Videojuego == null) CAD_Videojuego = new VideojuegoCAD();
 
-          //  CAD_Videojuego.borrarVideojuego(this.id);
+            CAD_Videojuego.Borrar(this.Id);
         }
 
         //Muestra un Videojuego de la bbdd
         public VideojuegoEN mostrarVideojuego()
         {
-           // return CAD_Videojuego.mostrarVideojuego(this.id);
-            return null;
+            return CAD_Videojuego.Mostrar(this.Id);
+           
         }
     }
 }

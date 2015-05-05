@@ -62,11 +62,11 @@ namespace Modelo.EN
             crearCad();
             try
             {
-              //  CAD_Consola.crearConsola(this);
+                CAD_Consola.Crear(this);
             }
             catch (Exception)
             {
-                Console.Write("Error al insertar el articulo: %s\n");
+                Console.Write("Error al insertar una consola: %s\n");
             }
         }
 
@@ -77,11 +77,11 @@ namespace Modelo.EN
 
             try
             {
-               // CAD_Consola.actualizarConsola(this);
+                CAD_Consola.Actualizar(this);
             }
             catch (Exception)
             {
-                Console.Write("Error al actualizar el articulo: %s\n");
+                Console.Write("Error al insertar una consola: %s\n");
             }
         }
 
@@ -90,14 +90,14 @@ namespace Modelo.EN
         {
             if (CAD_Consola == null) CAD_Consola = new ConsolaCAD();
 
-            //CAD_Consola.borrarConsola(this.id);
+            CAD_Consola.Borrar(this.Id);
         }
 
         //Muestra una Consola de la bbdd
         public ConsolaEN mostrarConsola()
         {
-            //return CAD_Consola.mostrarConsola(this.id);
-            return null;
+            return CAD_Consola.Mostrar(this.Id);
+            
         }
 
 

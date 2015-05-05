@@ -61,7 +61,7 @@ namespace Modelo.CAD
             }
         }
 
-        //Actualiza un movil en la bbdd
+       
         public void Actualizar(VideojuegoEN videojuegoEN)
         {
             Conectar();
@@ -88,7 +88,7 @@ namespace Modelo.CAD
             }
         }
 
-        //Metodo para borrar un movil de la bddd
+        
         public void Borrar(int p)
         {
             BorrarVideojuego(p.ToString());
@@ -115,11 +115,11 @@ namespace Modelo.CAD
             }
         }
 
-        //Metodo para mostrar un movil de la bbdd
+       
         public VideojuegoEN Mostrar(int id)
         {
             ProductoEN producto = new VideojuegoEN();
-            //CAD_Producto.cargarDatosProducto(id, producto.TipoProducto, out producto);
+            CAD_Producto.Cargar(id, producto.TipoProducto, out producto);
             VideojuegoEN consola = (VideojuegoEN)producto;
 
             Conectar();
@@ -151,7 +151,7 @@ namespace Modelo.CAD
             return consola;
         }
 
-        //Metodos para conectar y desconectar de la bbdd
+     
         private void Conectar()
         {
             if (BD.State != System.Data.ConnectionState.Open)
