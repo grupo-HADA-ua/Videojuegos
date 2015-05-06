@@ -26,7 +26,7 @@
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li><a href="~/Administrador/Clientes.aspx" runat="server">Clientes</a></li>
-                            <li><a href="#">Productos</a></li>
+                            <li><a href="~/Administrador/Productos.aspx" runat="server">Productos</a></li>
                             <li><a href="#">Noticias</a></li>
                         </ul>
                     </div>

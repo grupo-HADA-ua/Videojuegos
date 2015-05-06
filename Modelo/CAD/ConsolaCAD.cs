@@ -3,52 +3,38 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Configuration;
 using Modelo.EN;
+using Modelo.Conexion;
+using System.Data;
 
 namespace Modelo.CAD
 {
     class ConsolaCAD : ProductoCAD
     {
-        private SqlConnection BD;
+        private Conectar _conectar;
+        private SqlConnection _conexion;
         private string cadena;
         //private ProductoCAD CAD_Producto;
 
         //Constructor
-        public ConsolaCAD(string bbdd = "")
+        public ConsolaCAD()
         {
-            if (bbdd == "") cadena = ConfigurationManager.ConnectionStrings[""].ToString();
-            else cadena = bbdd;
-
-            try
-            {
-                BD = new SqlConnection(cadena);
-            }
-            catch (Exception e)
-            {
-                e.ToString();
-            }
+            _conectar = new Conectar();
+            _conexion = _conectar.Conexion;
         }
 
-        //METODOS
-        //CRUD
-        public void Crear(ConsolaEN consolaEN)
+        public void Crear(ConsolaEN c)
         {
-            Conectar();
-
-            string orden = "insert into Consola values (";
-            orden += consolaEN.Id;
-            orden += ", '";
-            orden += consolaEN.Nombre;
-            orden += ", '";
-            orden += consolaEN.Precio;
-            orden += ", '";
-            orden += consolaEN.CantidadStock;
-            orden += "')";
-
             try
             {
-                SqlCommand comando = new SqlCommand(orden, BD);
-
-                comando.ExecuteNonQuery();
+                _conexion.Open();
+                var sql = "INSERT INTO consolas(nombre, precio, cantidadstock, descripcion) " +
+                    "VALUES(@nombre, @precio, @cantidadstock, @descripcion);";
+                var cmd = new SqlCommand(sql, _conexion);
+                cmd.Parameters.Add("@nombre", SqlDbType.NVarChar).Value = c.Nombre;
+                cmd.Parameters.Add("@precio", SqlDbType.Float).Value = c.Precio;
+                cmd.Parameters.Add("@cantidadstock", SqlDbType.Int).Value = c.CantidadStock;
+                cmd.Parameters.Add("@descripcion", SqlDbType.Text).Value = c.Descripcion;
+                cmd.ExecuteNonQuery();
             }
             catch (Exception e)
             {
@@ -56,7 +42,27 @@ namespace Modelo.CAD
             }
             finally
             {
-                Desconectar();
+                _conexion.Close();
+            }
+        }       
+
+
+        public void BorrarTodos()
+        {
+            try
+            {
+                _conexion.Open();
+                var sql = "TRUNCATE TABLE consolas;";
+                var cmd = new SqlCommand(sql, _conexion);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+            finally
+            {
+                _conexion.Close();
             }
         }
 
@@ -72,7 +78,7 @@ namespace Modelo.CAD
 
             try
             {
-                SqlCommand comando = new SqlCommand(orden, BD);
+                SqlCommand comando = new SqlCommand(orden, _conexion);
 
                 comando.ExecuteNonQuery();
             }
@@ -99,7 +105,7 @@ namespace Modelo.CAD
 
             try
             {
-                SqlCommand comando = new SqlCommand(orden, BD);
+                SqlCommand comando = new SqlCommand(orden, _conexion);
 
                 comando.ExecuteNonQuery();
             }
@@ -126,7 +132,7 @@ namespace Modelo.CAD
 
             try
             {
-                SqlCommand conectar = new SqlCommand(orden, BD);
+                SqlCommand conectar = new SqlCommand(orden, _conexion);
                 SqlDataReader reader = conectar.ExecuteReader();
 
                 if (reader.Read())
@@ -151,13 +157,13 @@ namespace Modelo.CAD
         //Metodos para conectar y desconectar de la bbdd
         private void Conectar()
         {
-            if (BD.State != System.Data.ConnectionState.Open)
-                BD.Open();
+            if (_conexion.State != System.Data.ConnectionState.Open)
+                _conexion.Open();
         }
         private void Desconectar()
         {
-            if (BD.State == System.Data.ConnectionState.Open)
-                BD.Close();
+            if (_conexion.State == System.Data.ConnectionState.Open)
+                _conexion.Close();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Modelo.EN
 {
     public class ConsolaEN : ProductoEN
     {
-        private ConsolaCAD CAD_Consola;
+        private ConsolaCAD _cad = new ConsolaCAD();
 
          public ConsolaEN()
         {
@@ -17,6 +17,14 @@ namespace Modelo.EN
         public ConsolaEN(int id, string nombre, double precio, int cantidadstock)
         {
             inicializar(id, nombre, precio, cantidadstock);
+        }
+
+        public ConsolaEN(string nombre, double precio, int cantidadStock, string descripcion)
+        {
+            Nombre = nombre;
+            Precio = precio;
+            CantidadStock = cantidadStock;
+            Descripcion = descripcion;
         }
 
         public ConsolaEN(ConsolaEN c)
@@ -50,10 +58,20 @@ namespace Modelo.EN
         //Metodos
         //CRUD
 
+        override public void Guardar()
+        {
+            _cad.Crear(this);
+        }
+
+        public void Borrartodos()
+        {
+            _cad.BorrarTodos();
+        }
+
         public void crearCad()
         {
-            if (CAD_Consola == null)
-                CAD_Consola = new ConsolaCAD();
+            if (_cad == null)
+                _cad = new ConsolaCAD();
         }
 
         //Introduce una nueva Consola en la bbdd
@@ -88,7 +106,7 @@ namespace Modelo.EN
         //Borramos una Consola de la bbdd
         public void borrarConsola()
         {
-            if (CAD_Consola == null) CAD_Consola = new ConsolaCAD();
+            if (_cad == null) _cad = new ConsolaCAD();
 
             //CAD_Consola.borrarConsola(this.id);
         }

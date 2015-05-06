@@ -70,6 +70,7 @@
     <Content Include="Administrador\Clientes.aspx" />
     <Content Include="Administrador\Login.aspx" />
     <Content Include="Administrador\PanelDeControl.aspx" />
+    <Content Include="Administrador\Productos.aspx" />
     <Content Include="App_Data\Database1.mdf" />
     <Content Include="App_Data\Database1_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
@@ -178,6 +179,13 @@
     </Compile>
     <Compile Include="Administrador\PanelDeControl.aspx.designer.cs">
       <DependentUpon>PanelDeControl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\Productos.aspx.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\Productos.aspx.designer.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_GlobalResources\Cadenas.Designer.cs">
       <AutoGen>True</AutoGen>

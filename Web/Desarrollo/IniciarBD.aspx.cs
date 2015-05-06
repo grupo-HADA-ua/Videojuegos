@@ -15,6 +15,7 @@ namespace Web.Desarrollo
             GenerarClientes();
             GenerarVideojuegos();
             GenerarAdministradores();
+            GenerarConsolas();
         }
 
         private void GenerarClientes()
@@ -77,6 +78,32 @@ namespace Web.Desarrollo
             admin.BorrarTodos();
             admin = new AdministradorEN("admin", "admin");
             admin.Guardar();
+        }
+
+        private void GenerarConsolas()
+        {
+            var c = new ConsolaEN();
+            c.Borrartodos();
+            c.Nombre = "Nintendo - Wii Mini Roja y Negra";
+            c.Precio = 99.0;
+            c.CantidadStock = 100;
+            c.Descripcion = "Wii Mini, el último modelo de consola más asequible y" + 
+                " ligero del momento. El nuevo diseño que te ofrece Nintendo es el de " +
+                "una Wii convencional, pero que disfrutarás al máximo al poder" + 
+                " llevártela allí donde quieras. Su reducido tamaño y los nuevos " + 
+                "colores, harán que tengas que hacerte ya con ella";
+            c.Guardar();
+
+            c.Nombre = "Sony - PS4 Negra Básica, 500Gb";
+            c.Precio = 375;
+            c.CantidadStock = 100;
+            c.Descripcion = "La consola PS4 ha sido diseñada para que goces" + 
+                " de una amplia gama de juegos con gráficos detallados de alta" + 
+                " definición y vivas una experiencia que romperá todas tus expectativas." + 
+                " Gracias a los procesadores ultrarrápidos y la memoria unificada" + 
+                " de alto rendimiento de 8GB, disfrutarás como nunca antes hayas" + 
+                " visto de los mejores juegos. (Incluye un mando inalámbrico).";
+            c.Guardar();
         }
     }
 }
