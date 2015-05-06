@@ -38,6 +38,9 @@ namespace Modelo.EN
         private int id;
         public int Id { get { return id; } set { id = value; } }
 
+        private string descripcion;
+        public string Descripcion { get { return descripcion; } set { descripcion = value; } }
+
          public ProductoEN()
         {
             cad = new ProductoCAD();
@@ -80,7 +83,7 @@ namespace Modelo.EN
         /// <summary>
         /// Método para guardar el producto en la base de datos
         /// </summary>
-        public void Guardar()
+        public virtual void Guardar()
         {
             cad.Crear(this);
         }
@@ -99,7 +102,7 @@ namespace Modelo.EN
         /// Obtiene todos los productos de la base de datos
         /// </summary>
         /// <returns>Lista con todos los productos</returns>
-        public IList<ProductoEN> ObtenerTodos()
+        public virtual IList<ProductoEN> ObtenerTodos()
         {
             return cad.ObtenerTodos();
         }

@@ -7,9 +7,9 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Web.Catalogo {
+namespace Web.Administrador {
     
     
-    public partial class Catalogo {
+    public partial class PanelDeControl {
     }
 }

@@ -8,7 +8,7 @@ namespace Modelo.EN
 {
     public class ClienteEN
     {
-        private IClienteCAD cad = new ClienteCAD();
+        private IClienteCAD _cad = new ClienteCAD();
 
         private string id;
         public string Id { get { return id; } set { id = value; } }
@@ -73,43 +73,43 @@ namespace Modelo.EN
 
         public void Guardar()
         {
-            cad.Crear(this);
+            _cad.Crear(this);
         }
 
         public ClienteEN Obtener()
         {
-            return cad.Obtener(this);
+            return _cad.Obtener(this);
 
         }
 
         public bool LoginCorrecto()
         {
-            return cad.LoginCorrecto(this);
+            return _cad.LoginCorrecto(this);
         }
 
         public IList<ClienteEN> ObtenerTodos()
         {
-            return cad.ObtenerTodos();
+            return _cad.ObtenerTodos();
         }
 
         public void Actualizar()
         {
-            cad.Actualizar(this);
+            _cad.Actualizar(this);
         }
 
         public void Borrar()
         {
-            cad.Borrar(this);
+            _cad.Borrar(this);
         }
 
         public void BorrarTodos()
         {
-            cad.BorrarTodos();
+            _cad.BorrarTodos();
         }
 
         public bool Existe()
         {
-            return cad.Existe(this);
+            return _cad.Existe(this);
         }
          
     }

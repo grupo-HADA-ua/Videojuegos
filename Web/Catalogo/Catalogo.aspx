@@ -94,4 +94,25 @@
             <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
         </div>
     </div>
+
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+        </tr>
+        <% var videojuegos = ObtenerVideojuegos(); %>
+        <% foreach (var v in videojuegos)
+            {%>
+        <tr>
+            <td>
+                <%= v.Nombre %>
+            </td>
+            <td>
+                <%= v.Precio.ToString() %>
+            </td>
+        </tr>
+
+        <%
+            }%>
+    </table>
 </asp:Content>

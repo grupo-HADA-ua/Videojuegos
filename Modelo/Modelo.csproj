@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CAD\AdministradorCAD.cs" />
     <Compile Include="CAD\CAD.cs" />
     <Compile Include="CAD\ClienteCAD.cs" />
     <Compile Include="CAD\ConexionCAD.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="CAD\VideojuegoCAD.cs" />
     <Compile Include="Conexion\Conectar.cs" />
     <Compile Include="ENUM\Edad.cs" />
+    <Compile Include="EN\AdministradorEN.cs" />
     <Compile Include="EN\CarritoEN.cs" />
     <Compile Include="EN\ClienteEN.cs" />
     <Compile Include="EN\ConsolaEN.cs" />

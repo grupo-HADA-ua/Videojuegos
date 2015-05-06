@@ -9,19 +9,27 @@ namespace Modelo.EN
 {
     public class VideojuegoEN : ProductoEN
     {
+        private VideojuegoCAD cad = new VideojuegoCAD();
 
-        private VideojuegoCAD CAD_Videojuego;
-
-        private Edad edadminima;
-        public Edad EdadMinima { get { return edadminima; } set { edadminima = value; } }
+        private int edadminima;
+        public int EdadMinima { get { return edadminima; } set { edadminima = value; } }
 
          public VideojuegoEN()
         {
         }
 
-        public VideojuegoEN(int id, string nombre, double precio, int cantidadstock, Edad edadminima)
+        public VideojuegoEN(int id, string nombre, double precio, int cantidadstock, int edadminima)
         {
             inicializar(id, nombre, precio, cantidadstock, edadminima);
+        }
+
+        public VideojuegoEN(string nombre, double precio, int cantidadStock, int edadMinima, string descripcion)
+        {
+            Nombre = nombre;
+            Precio = precio;
+            CantidadStock = cantidadStock;
+            EdadMinima = edadMinima;
+            Descripcion = descripcion;
         }
 
         public VideojuegoEN(VideojuegoEN c)
@@ -29,7 +37,7 @@ namespace Modelo.EN
             inicializar(c.Id, c.Nombre, c.Precio, c.CantidadStock, c.EdadMinima);
         }
 
-        private void inicializar(int id, string nombre, double precio, int cantidadstock, Edad edadminima)
+        private void inicializar(int id, string nombre, double precio, int cantidadstock, int edadminima)
         {
             Id = id;
             Nombre = nombre;
@@ -61,8 +69,8 @@ namespace Modelo.EN
 
         public void crearCad()
         {
-            if (CAD_Videojuego == null)
-                CAD_Videojuego = new VideojuegoCAD();
+            if (cad == null)
+                cad = new VideojuegoCAD();
         }
 
         //INtroduce un nuevo Videojuego en la bbdd
@@ -97,7 +105,7 @@ namespace Modelo.EN
         //Borramos un Videojuego de la bbdd
         public void borrarVideojuego()
         {
-            if (CAD_Videojuego == null) CAD_Videojuego = new VideojuegoCAD();
+            if (cad == null) cad = new VideojuegoCAD();
 
           //  CAD_Videojuego.borrarVideojuego(this.id);
         }
@@ -107,6 +115,21 @@ namespace Modelo.EN
         {
            // return CAD_Videojuego.mostrarVideojuego(this.id);
             return null;
+        }
+
+        override public void Guardar()
+        {
+            cad.Crear(this);
+        }
+
+        public IList<VideojuegoEN> ObtenerTodos()
+        {
+            return cad.ObtenerTodos();
+        }
+
+        public void BorrarTodos()
+        {
+            cad.BorrarTodos();
         }
     }
 }

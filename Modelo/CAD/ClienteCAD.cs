@@ -10,13 +10,13 @@ namespace Modelo.CAD
 {
     public class ClienteCAD : IClienteCAD
     {
-        private Conectar conectar;
-        private SqlConnection conexion; 
+        private Conectar _conectar;
+        private SqlConnection _conexion; 
 
         public ClienteCAD()
         {
-            conectar = new Conectar();
-            conexion = conectar.Conexion;
+            _conectar = new Conectar();
+            _conexion = _conectar.Conexion;
         }
 
         //METODOS
@@ -27,9 +27,9 @@ namespace Modelo.CAD
         {
             try
             {
-                conexion.Open();
+                _conexion.Open();
                 string sql = "INSERT INTO cliente(nombre, email, password, direccion) values (@nombre, @email, @password, @direccion);";
-                SqlCommand cmd = new SqlCommand(sql, conexion);
+                SqlCommand cmd = new SqlCommand(sql, _conexion);
                 cmd.Parameters.Add("@nombre", SqlDbType.VarChar).Value = c.Nombre;
                 cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = c.Email;
                 cmd.Parameters.Add("@password", SqlDbType.VarChar).Value = c.Password;
@@ -42,7 +42,7 @@ namespace Modelo.CAD
             }
             finally
             {
-                conexion.Close();
+                _conexion.Close();
             }
         }
 
@@ -51,9 +51,9 @@ namespace Modelo.CAD
             bool existe = false;
             try
             {
-                conexion.Open();
+                _conexion.Open();
                 var sql = "SELECT email FROM Cliente WHERE email LIKE @email;";
-                var cmd = new SqlCommand(sql, conexion);
+                var cmd = new SqlCommand(sql, _conexion);
                 cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = c.Email;
                 var reader = cmd.ExecuteReader();
                 if (reader.Read())
@@ -68,7 +68,7 @@ namespace Modelo.CAD
             }
             finally
             {
-                conexion.Close();
+                _conexion.Close();
             }
             return existe;
         }
@@ -76,9 +76,9 @@ namespace Modelo.CAD
         public bool LoginCorrecto(ClienteEN c) {
             bool datos = false;
             try{
-                conexion.Open();
+                _conexion.Open();
                 var sql = "SELECT email, password FROM Cliente WHERE email=@email AND password=@password;";
-                var cmd = new SqlCommand(sql, conexion);
+                var cmd = new SqlCommand(sql, _conexion);
                 cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = c.Email;
                 cmd.Parameters.Add("@password", SqlDbType.VarChar).Value = c.Password;
                 var reader = cmd.ExecuteReader();
@@ -93,7 +93,7 @@ namespace Modelo.CAD
             }
             finally
             {
-                conexion.Close();
+                _conexion.Close();
             }
             return datos;
         }
@@ -102,9 +102,9 @@ namespace Modelo.CAD
         {
             try
             {
-                conexion.Open();
+                _conexion.Open();
                 var sql = "TRUNCATE TABLE Cliente;";
-                var cmd = new SqlCommand(sql, conexion);
+                var cmd = new SqlCommand(sql, _conexion);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -113,7 +113,7 @@ namespace Modelo.CAD
             }
             finally
             {
-                conexion.Close();
+                _conexion.Close();
             }
         }
 
@@ -121,10 +121,10 @@ namespace Modelo.CAD
         {
             try
             {
-                conexion.Open();
+                _conexion.Open();
                 var sql = "SELECT id, nombre, email, password, direccion FROM Cliente WHERE " +
                     "email LIKE @email;";
-                var cmd = new SqlCommand(sql, conexion);
+                var cmd = new SqlCommand(sql, _conexion);
                 cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = c.Email;
                 var reader = cmd.ExecuteReader();
                 if (reader.Read())
@@ -135,6 +135,7 @@ namespace Modelo.CAD
                     c.Password = reader["email"].ToString();
                     c.Direccion = reader["direccion"].ToString();
                 }
+                reader.Close();
             }
             catch (Exception e)
             {
@@ -142,9 +143,44 @@ namespace Modelo.CAD
             }
             finally
             {
-                conexion.Close();
+                _conexion.Close();
             }
             return c;
+        }
+
+        public IList<ClienteEN> ObtenerTodos()
+        {
+            var clientes = new List<ClienteEN>();
+
+            try
+            {
+                _conexion.Open();
+
+                var sql = "SELECT id, nombre, email, direccion FROM Cliente;";
+                var cmd = new SqlCommand(sql, _conexion);
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    var c = new ClienteEN();
+                    c.Id = reader["id"].ToString();
+                    c.Nombre = (string)reader["nombre"];
+                    c.Email = (string)reader["email"];
+                    c.Direccion = (string)reader["direccion"];
+                    clientes.Add(c);
+                }
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+
+            return clientes;
         }
         
 
@@ -153,14 +189,14 @@ namespace Modelo.CAD
         {
             try
             {
-                conexion.Open();
+                _conexion.Open();
                 string com = "update Cliente set ";
                 com += "id = '" + clienteEN.Id.ToString() + "', ";
                 com += "nombre = '" + clienteEN.Nombre.ToString() + "', ";
                 com += "email = '" + clienteEN.Email.ToString() + "', ";
                 com += "password = '" + clienteEN.Password.ToString() + "', ";
                 com += "direccion = '" + clienteEN.Direccion.ToString() + "', ";
-                SqlCommand comand = new SqlCommand(com, conexion);
+                SqlCommand comand = new SqlCommand(com, _conexion);
                 comand.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -169,7 +205,7 @@ namespace Modelo.CAD
             }
             finally
             {
-                conexion.Close();
+                _conexion.Close();
             }
         }
 
@@ -178,10 +214,10 @@ namespace Modelo.CAD
         {
             try
             {
-                conexion.Open();
+                _conexion.Open();
                 string com = "delete from Cliente where id = '" + c.Id + "'";
 
-                SqlCommand comand = new SqlCommand(com, conexion);
+                SqlCommand comand = new SqlCommand(com, _conexion);
                 comand.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -190,7 +226,7 @@ namespace Modelo.CAD
             }
             finally
             {
-                conexion.Close();
+                _conexion.Close();
             }
         }
 
@@ -198,13 +234,13 @@ namespace Modelo.CAD
         public void cargarDatoscliente(string id, out ClienteEN cliente)
         {
             cliente = new ClienteEN();
-            conexion.Open();
+            _conexion.Open();
 
             string orden = "select * from Cliente where id = " + id + ";";
 
             try
             {
-                SqlCommand comando = new SqlCommand(orden, conexion);
+                SqlCommand comando = new SqlCommand(orden, _conexion);
                 SqlDataReader reader = comando.ExecuteReader();
 
                 if (reader.Read())
@@ -224,7 +260,7 @@ namespace Modelo.CAD
             }
             finally
             {
-                conexion.Close();
+                _conexion.Close();
             }
         }
 
@@ -235,11 +271,11 @@ namespace Modelo.CAD
 
             try
             {
-                conexion.Open();
+                _conexion.Open();
 
                 string com = "select * from Cliente where email = '" + id + "';";
 
-                SqlCommand comand = new SqlCommand(com, conexion);
+                SqlCommand comand = new SqlCommand(com, _conexion);
                 SqlDataReader reader = comand.ExecuteReader();
 
                 if (reader.Read())
@@ -259,18 +295,11 @@ namespace Modelo.CAD
             }
             finally
             {
-                conexion.Close();
+                _conexion.Close();
             }
 
             return cliente;
         }
-
-        public IList<ClienteEN> ObtenerTodos()
-        {
-            return null;
-        }
-
-
 
         public List<string> getAllId()
         {
@@ -278,11 +307,11 @@ namespace Modelo.CAD
 
             try
             {
-                conexion.Open();
+                _conexion.Open();
 
                 string com = "select id from Cliente";
 
-                SqlCommand comand = new SqlCommand(com, conexion);
+                SqlCommand comand = new SqlCommand(com, _conexion);
                 SqlDataReader reader = comand.ExecuteReader();
 
                 while (reader.Read())
@@ -296,14 +325,10 @@ namespace Modelo.CAD
             }
             finally
             {
-                conexion.Close();
+                _conexion.Close();
             }
 
             return ids;
-
         }
-
-
-
     }
 }
