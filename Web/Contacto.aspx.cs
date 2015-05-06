@@ -13,5 +13,22 @@ namespace Web
         {
 
         }
+
+        protected void Email_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)//Se abre el programa predeterminado de correo para enviarle el mensaje
+        {
+            String Parametros;
+            String Para = "mailto:greenrocks54@gmail.com";
+            String Asunto = TextBox1.Text;//Origen (validado)
+            String Mensaje = TextBox2.Text;//Mensaje del texto (no puede ser nulo)
+            String Archivo = "";
+
+            Parametros = Para + "?subject=" + Asunto + "&body=" + Mensaje + "&Attachment=" + Archivo;
+            System.Diagnostics.Process.Start(Parametros);
+        }
     }
 }
