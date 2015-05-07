@@ -63,6 +63,11 @@ namespace Modelo.EN
             _cad.Crear(this);
         }
 
+        public IList<ConsolaEN> ObtenerTodos()
+        {
+            return _cad.ObtenerTodos();
+        }
+
         public void Borrartodos()
         {
             _cad.BorrarTodos();

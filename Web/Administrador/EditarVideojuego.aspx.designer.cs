@@ -7,36 +7,54 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Web {
+namespace Web.Administrador {
     
     
-    public partial class About {
+    public partial class EditarVideojuego {
         
         /// <summary>
-        /// Control LinkFacebook.
+        /// Control Nombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink LinkFacebook;
+        protected global::System.Web.UI.WebControls.TextBox Nombre;
         
         /// <summary>
-        /// Control LinkTwitter.
+        /// Control Edad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink LinkTwitter;
+        protected global::System.Web.UI.WebControls.TextBox Edad;
         
         /// <summary>
-        /// Control LinkYoutube.
+        /// Control Precio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink LinkYoutube;
+        protected global::System.Web.UI.WebControls.TextBox Precio;
+        
+        /// <summary>
+        /// Control Stock.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Stock;
+        
+        /// <summary>
+        /// Control Descripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Descripcion;
     }
 }

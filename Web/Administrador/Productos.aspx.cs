@@ -1,10 +1,6 @@
 ﻿using Modelo.EN;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Web.Administrador
 {
@@ -18,9 +14,31 @@ namespace Web.Administrador
             }
         }
 
+        protected void CrearVideojuego(object sender, EventArgs e)
+        {
+            var v = new VideojuegoEN();
+            v.Nombre = Nombre.Text;
+            v.Precio = double.Parse(Precio.Text);
+            v.EdadMinima = int.Parse(Edad.Text);
+            v.CantidadStock = int.Parse(Stock.Text);
+            v.Descripcion = Descripcion.Text;
+            v.Guardar();
+            Response.Redirect("~/Administrador/Productos.aspx");
+        }
+
         protected IList<VideojuegoEN> ObtenerVideojuegos()
         {
             return (new VideojuegoEN()).ObtenerTodos();
+        }
+
+        protected IList<ConsolaEN> ObtenerConsolas()
+        {
+            return (new ConsolaEN()).ObtenerTodos();
+        }
+
+        protected IList<PerifericoEN> ObtenerPerifericos()
+        {
+            return (new PerifericoEN()).ObtenerTodos();
         }
     }
 }

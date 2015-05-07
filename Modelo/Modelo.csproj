@@ -68,7 +68,7 @@
     <Compile Include="EN\DescuentoEN.cs" />
     <Compile Include="EN\LineaPedidoEN.cs" />
     <Compile Include="EN\PedidoEN.cs" />
-    <Compile Include="EN\PerifericoEn.cs" />
+    <Compile Include="EN\PerifericoEN.cs" />
     <Compile Include="EN\ProductoEN.cs" />
     <Compile Include="EN\UsuarioEN.cs" />
     <Compile Include="EN\VideojuegoEN.cs" />

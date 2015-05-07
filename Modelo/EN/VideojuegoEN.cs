@@ -9,7 +9,7 @@ namespace Modelo.EN
 {
     public class VideojuegoEN : ProductoEN
     {
-        private VideojuegoCAD cad = new VideojuegoCAD();
+        private VideojuegoCAD _cad = new VideojuegoCAD();
 
         private int edadminima;
         public int EdadMinima { get { return edadminima; } set { edadminima = value; } }
@@ -69,8 +69,8 @@ namespace Modelo.EN
 
         public void crearCad()
         {
-            if (cad == null)
-                cad = new VideojuegoCAD();
+            if (_cad == null)
+                _cad = new VideojuegoCAD();
         }
 
         //INtroduce un nuevo Videojuego en la bbdd
@@ -105,7 +105,7 @@ namespace Modelo.EN
         //Borramos un Videojuego de la bbdd
         public void borrarVideojuego()
         {
-            if (cad == null) cad = new VideojuegoCAD();
+            if (_cad == null) _cad = new VideojuegoCAD();
 
           //  CAD_Videojuego.borrarVideojuego(this.id);
         }
@@ -119,17 +119,27 @@ namespace Modelo.EN
 
         override public void Guardar()
         {
-            cad.Crear(this);
+            _cad.Crear(this);
+        }
+
+        override public void Actualizar()
+        {
+            _cad.Actualizar(this);
+        }
+
+        public VideojuegoEN ObtenerPorId()
+        {
+            return _cad.ObtenerPorId(Id);
         }
 
         public IList<VideojuegoEN> ObtenerTodos()
         {
-            return cad.ObtenerTodos();
+            return _cad.ObtenerTodos();
         }
 
         public void BorrarTodos()
         {
-            cad.BorrarTodos();
+            _cad.BorrarTodos();
         }
     }
 }

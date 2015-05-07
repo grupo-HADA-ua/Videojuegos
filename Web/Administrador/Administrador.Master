@@ -29,6 +29,14 @@
                             <li><a href="~/Administrador/Productos.aspx" runat="server">Productos</a></li>
                             <li><a href="#">Noticias</a></li>
                         </ul>
+                        <% if (Session["Administrador"] != null)
+                            { %>
+                        <ul class="nav navbar-nav navbar-right">                            
+                            <li>
+                                <asp:Button Text="Salir" CssClass="btn btn-default" OnClick="Salir" runat="server" />
+                            </li>
+                        </ul>
+                        <% } %>
                     </div>
                 </div>
             </nav>

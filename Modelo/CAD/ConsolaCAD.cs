@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Modelo.CAD
 {
-    class ConsolaCAD : ProductoCAD
+    class ConsolaCAD
     {
         private Conectar _conectar;
         private SqlConnection _conexion;
@@ -46,6 +46,39 @@ namespace Modelo.CAD
             }
         }       
 
+        public IList<ConsolaEN> ObtenerTodos()
+        {
+            var consolas = new List<ConsolaEN>();
+
+            try
+            {
+                _conexion.Open();
+                var sql = "SELECT id, nombre, precio, cantidadstock, descripcion FROM consolas;";
+                var cmd = new SqlCommand(sql, _conexion);
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    var c = new ConsolaEN();
+                    c.Id = (int)reader["id"];
+                    c.Nombre = (string)reader["nombre"];
+                    c.Precio = (double)reader["precio"];
+                    c.CantidadStock = (int)reader["cantidadstock"];
+                    c.Descripcion = (string)reader["descripcion"];
+                    consolas.Add(c);
+                }
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+
+            return consolas;
+        }
 
         public void BorrarTodos()
         {

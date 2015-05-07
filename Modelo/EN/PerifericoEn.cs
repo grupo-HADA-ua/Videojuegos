@@ -6,20 +6,29 @@ using Modelo.CAD;
 
 namespace Modelo.EN
 {
-    public class PerifericoEn : ProductoEN
+    public class PerifericoEN : ProductoEN
     {
-        private PerifericoCAD CAD_Periferico;
+        private PerifericoCAD _cad;
 
-         public PerifericoEn()
+         public PerifericoEN()
         {
+            _cad = new PerifericoCAD();
         }
 
-        public PerifericoEn(int id, string nombre, double precio, int cantidadstock)
+        public PerifericoEN(int id, string nombre, double precio, int cantidadstock)
         {
             inicializar(id, nombre, precio, cantidadstock);
         }
 
-        public PerifericoEn(PerifericoEn c)
+        public PerifericoEN(string nombre, double precio, int cantidadstock, string descripcion)
+        {
+            Nombre = nombre;
+            Precio = precio;
+            CantidadStock = cantidadstock;
+            Descripcion = descripcion;
+        }
+
+        public PerifericoEN(PerifericoEN c)
         {
             inicializar(c.Id, c.Nombre, c.Precio, c.CantidadStock);
         }
@@ -34,9 +43,9 @@ namespace Modelo.EN
 
         public override bool Equals(Object obj)
         {
-            if (!(obj is PerifericoEn)) return false;
+            if (!(obj is PerifericoEN)) return false;
 
-            PerifericoEn p = (PerifericoEn)obj;
+            PerifericoEN p = (PerifericoEN)obj;
             return Id == p.Id & Nombre == p.Nombre & Precio == p.Precio & CantidadStock == p.CantidadStock;
         }
 
@@ -49,10 +58,27 @@ namespace Modelo.EN
 
         //Metodos
         //CRUD
+
+        override public void Guardar()
+        {
+            _cad.Crear(this);
+        }
+
+        public IList<PerifericoEN> ObtenerTodos()
+        {
+            return _cad.ObtenerTodos();
+        }
+
+        public void BorrarTodos()
+        {
+            _cad.BorrarTodos();
+        }
+
+
         public void crearCad()
         {
-            if (CAD_Periferico == null)
-                CAD_Periferico = new PerifericoCAD();
+            if (_cad == null)
+                _cad = new PerifericoCAD();
         }
 
         public void crearPeriferico()
@@ -83,12 +109,12 @@ namespace Modelo.EN
 
         public void borrarPeriferico()
         {
-            if (CAD_Periferico == null) CAD_Periferico = new PerifericoCAD();
+            if (_cad == null) _cad = new PerifericoCAD();
 
            // CAD_Periferico.borrarPeriferico(this.id);
         }
 
-        public PerifericoEn mostrarPeriferico()
+        public PerifericoEN mostrarPeriferico()
         {
             //return CAD_Periferico.mostrarPeriferico(this.id);
             return null;

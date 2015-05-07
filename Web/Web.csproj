@@ -68,6 +68,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Administrador\Clientes.aspx" />
+    <Content Include="Administrador\EditarVideojuego.aspx" />
     <Content Include="Administrador\Login.aspx" />
     <Content Include="Administrador\PanelDeControl.aspx" />
     <Content Include="Administrador\Productos.aspx" />
@@ -165,6 +166,13 @@
     </Compile>
     <Compile Include="Administrador\Clientes.aspx.designer.cs">
       <DependentUpon>Clientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\EditarVideojuego.aspx.cs">
+      <DependentUpon>EditarVideojuego.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\EditarVideojuego.aspx.designer.cs">
+      <DependentUpon>EditarVideojuego.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrador\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

@@ -1,10 +1,5 @@
 ﻿using Modelo.EN;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Web.Desarrollo
 {
@@ -16,6 +11,7 @@ namespace Web.Desarrollo
             GenerarVideojuegos();
             GenerarAdministradores();
             GenerarConsolas();
+            GenerarPerifericos();
         }
 
         private void GenerarClientes()
@@ -85,7 +81,7 @@ namespace Web.Desarrollo
             var c = new ConsolaEN();
             c.Borrartodos();
             c.Nombre = "Nintendo - Wii Mini Roja y Negra";
-            c.Precio = 99.0;
+            c.Precio = 99;
             c.CantidadStock = 100;
             c.Descripcion = "Wii Mini, el último modelo de consola más asequible y" + 
                 " ligero del momento. El nuevo diseño que te ofrece Nintendo es el de " +
@@ -104,6 +100,42 @@ namespace Web.Desarrollo
                 " de alto rendimiento de 8GB, disfrutarás como nunca antes hayas" + 
                 " visto de los mejores juegos. (Incluye un mando inalámbrico).";
             c.Guardar();
+        }
+
+        private void GenerarPerifericos()
+        {
+            var p = new PerifericoEN();
+            p.BorrarTodos();
+            p.Nombre = " Logitech B100 Ratón negro";
+            p.Precio = 7.95;
+            p.CantidadStock = 100;
+            p.Descripcion = "Cómodo, diseño ambidiestro La forma cómoda" + 
+                " y de bajo perfil se siente bien en cualquier mano, incluso después" + 
+                " de un largo día de trabajo. 800 dpi precisión óptica Disfrutará suave," + 
+                " control preciso del cursor que permite editar documentos y navegar" + 
+                " por la Web de manera más eficiente." + 
+                " Configuración Zero Funciona nada más sacarlo de la caja, basta conectarla" 
+                + " al puerto USB y ya está listo para los negocios.";
+            p.Guardar();
+
+            p.Nombre = "Natec Baribal Gaming Headset";
+            p.Precio = 24.95;
+            p.CantidadStock = 100;
+            p.Descripcion = "Modernos y cómodos auriculares de diseño que permitirán al usuario" + 
+                " conseguir la mejor calidad de sonido con la máxima comodidad. Cascos acolchados" + 
+                " con auriculares de símil piel de máxima calidad y comodidad." + 
+                " Calidad de sonido excepcional.Transmisión nítida de la voz." + 
+                " Cascos con diadema ajustable. Varilla giratoria rigida para colocar el micrófono" + 
+                " donde desee. Control de volumen integrado en el cable";
+            p.Guardar();
+
+            p.Nombre = "B-Move Set Free Kit Teclado y Ratón Wireless";
+            p.Precio = 19.90;
+            p.CantidadStock = 100;
+            p.Descripcion = "*Elegante diseño ultra-delgado: 286 * 121 * 19mm." + 
+                " Teclas de función multimedia. Mecanismo de alta calidad suave y silencioso." + 
+                " Tecnología 2.4G inalámbrica con alcance de 10m y nano-receptor.";
+            p.Guardar();
         }
     }
 }

@@ -99,19 +99,10 @@ namespace Modelo.EN
         }
 
         /// <summary>
-        /// Obtiene todos los productos de la base de datos
-        /// </summary>
-        /// <returns>Lista con todos los productos</returns>
-        public virtual IList<ProductoEN> ObtenerTodos()
-        {
-            return cad.ObtenerTodos();
-        }
-
-        /// <summary>
         /// Método para actualizar la columna correspondiente de la base de datos
         /// con el objeto actual
         /// </summary>
-        public void Actualizar()
+        public virtual void Actualizar()
         {
             cad.Actualizar(this);
         }

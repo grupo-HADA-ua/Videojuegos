@@ -25,7 +25,7 @@ namespace Modelo.CAD
             return null;
         }
 
-        public IList<ProductoEN> ObtenerTodos()
+        public virtual IList<ProductoEN> ObtenerTodos()
         {
             //TODO
             return null;
