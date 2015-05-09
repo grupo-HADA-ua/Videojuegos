@@ -45,6 +45,66 @@ namespace Modelo.CAD
             }
         }
 
+        public void Actualizar(PerifericoEN p)
+        {
+            try
+            {
+                _conexion.Open();
+
+                var sql = "UPDATE perifericos SET nombre=@nombre, precio=@precio, " +
+                    "cantidadstock=@cantidadstock, descripcion=@descripcion " +
+                    "WHERE id=@id";
+                var cmd = new SqlCommand(sql, _conexion);
+                cmd.Parameters.Add("@nombre", SqlDbType.NVarChar).Value = p.Nombre;
+                cmd.Parameters.Add("@cantidadstock", SqlDbType.Int).Value = p.CantidadStock;
+                cmd.Parameters.Add("@precio", SqlDbType.Float).Value = p.Precio;
+                cmd.Parameters.Add("@descripcion", SqlDbType.Text).Value = p.Descripcion;
+                cmd.Parameters.Add("@id", SqlDbType.Int).Value = p.Id;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+        }
+
+        public PerifericoEN ObtenerPorId(int id)
+        {
+            var p = new PerifericoEN();
+            try
+            {
+                _conexion.Open();
+                var sql = "SELECT id, nombre, precio, cantidadstock, descripcion " +
+                    "FROM perifericos WHERE id=@id";
+                var cmd = new SqlCommand(sql, _conexion);
+                cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                var r = cmd.ExecuteReader();
+
+                if (r.Read())
+                {
+                    p.Id = (int)r["id"];
+                    p.Nombre = (string)r["nombre"];
+                    p.Precio = (double)r["precio"];
+                    p.CantidadStock = (int)r["cantidadstock"];
+                    p.Descripcion = (string)r["descripcion"];
+                }
+                r.Close();
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return p;
+        }
+
         public IList<PerifericoEN> ObtenerTodos()
         {
             var perifericos = new List<PerifericoEN>();
@@ -63,6 +123,7 @@ namespace Modelo.CAD
                     p.Id = (int)reader["id"];
                     p.Nombre = (string)reader["nombre"];
                     p.Precio = (double)reader["precio"];
+                    p.CantidadStock = (int)reader["cantidadstock"];
                     p.Descripcion = (string)reader["descripcion"];
                     perifericos.Add(p);
                 }

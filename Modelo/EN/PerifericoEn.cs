@@ -64,6 +64,16 @@ namespace Modelo.EN
             _cad.Crear(this);
         }
 
+        public override void Actualizar()
+        {
+            _cad.Actualizar(this);
+        }
+
+        public PerifericoEN ObtenerPorId()
+        {
+            return _cad.ObtenerPorId(Id);
+        }
+
         public IList<PerifericoEN> ObtenerTodos()
         {
             return _cad.ObtenerTodos();

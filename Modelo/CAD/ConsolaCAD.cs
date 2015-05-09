@@ -46,6 +46,39 @@ namespace Modelo.CAD
             }
         }       
 
+        public ConsolaEN ObtenerPorId(int id)
+        {
+            var c = new ConsolaEN();
+            try
+            {
+                _conexion.Open();
+                var sql = "SELECT id, nombre, precio, cantidadstock, descripcion " +
+                    "FROM consolas WHERE id=@id";
+                var cmd = new SqlCommand(sql, _conexion);
+                cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                var r = cmd.ExecuteReader();
+
+                if (r.Read())
+                {
+                    c.Id = (int)r["id"];
+                    c.Nombre = (string)r["nombre"];
+                    c.Precio = (double)r["precio"];
+                    c.CantidadStock = (int)r["cantidadstock"];
+                    c.Descripcion = (string)r["descripcion"];
+                }
+                r.Close();
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+            return c;
+        }
+
         public IList<ConsolaEN> ObtenerTodos()
         {
             var consolas = new List<ConsolaEN>();
@@ -98,22 +131,23 @@ namespace Modelo.CAD
                 _conexion.Close();
             }
         }
-
-        //Actualiza un movil en la bbdd
-        public void Actualizar(ConsolaEN consolaEN)
+        
+        public void Actualizar(ConsolaEN c)
         {
-            Conectar();
-
-            string orden = "update Consola set nombre = '" + consolaEN.Nombre;
-            orden += "', precio = " + consolaEN.Precio.ToString();
-            orden += "', cantidadstock = " + consolaEN.CantidadStock.ToString();
-            orden += "' where id = " + consolaEN.Id.ToString() + ";";
-
             try
             {
-                SqlCommand comando = new SqlCommand(orden, _conexion);
+                _conexion.Open();
 
-                comando.ExecuteNonQuery();
+                var sql = "UPDATE consolas SET nombre=@nombre, precio=@precio, " +
+                    "cantidadstock=@cantidadstock, descripcion=@descripcion " +
+                    "WHERE id=@id";
+                var cmd = new SqlCommand(sql, _conexion);
+                cmd.Parameters.Add("@nombre", SqlDbType.NVarChar).Value = c.Nombre;
+                cmd.Parameters.Add("@cantidadstock", SqlDbType.Int).Value = c.CantidadStock;
+                cmd.Parameters.Add("@precio", SqlDbType.Float).Value = c.Precio;
+                cmd.Parameters.Add("@descripcion", SqlDbType.Text).Value = c.Descripcion;
+                cmd.Parameters.Add("@id", SqlDbType.Int).Value = c.Id;
+                cmd.ExecuteNonQuery();
             }
             catch (Exception e)
             {
@@ -121,7 +155,7 @@ namespace Modelo.CAD
             }
             finally
             {
-                Desconectar();
+                _conexion.Close();
             }
         }
 
@@ -151,8 +185,7 @@ namespace Modelo.CAD
                 Desconectar();
             }
         }
-
-        //Metodo para mostrar un movil de la bbdd
+        
         public ConsolaEN Mostrar(int id)
         {
             ProductoEN producto = new ConsolaEN();

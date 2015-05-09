@@ -60,6 +60,7 @@
             <th>Nombre</th>
             <th>Precio</th>
             <th>Stock</th>
+            <th>Editar</th>
         </tr>
         <% var consolas = ObtenerConsolas(); %>
         <% foreach (var c in consolas)
@@ -69,9 +70,33 @@
             <td><%= c.Nombre %></td>
             <td><%= c.Precio %></td>
             <td><%= c.CantidadStock %></td>
+            <td><a href="EditarConsola.aspx?id=<%: c.Id %>">Editar</a></td>
         </tr>
         <% } %>
     </table>
+    <div>
+        <div class="form-group">
+            <label for="NombreConsola">Nombre</label>
+            <asp:TextBox ID="NombreConsola" CssClass="form-control" type="text" runat="server" />
+        </div>
+
+        <div class="form-group">
+            <label for="PrecioConsola">Precio</label>
+            <asp:TextBox ID="PrecioConsola" CssClass="form-control"  runat="server" />
+        </div>
+
+        <div class="form-group">
+            <label for="StockConsola">Stock</label>
+            <asp:TextBox ID="StockConsola" CssClass="form-control" runat="server" />
+        </div>
+
+        <div class="form-group">
+            <label for="DescripcionConsola">Descripcion</label>
+            <asp:TextBox ID="DescripcionConsola" type="textarea" CssClass="form-control" runat="server" />
+        </div>
+        <asp:Button Text="Crear Consola" OnClick="CrearConsola" CssClass="btn btn-default" runat="server" />        
+    </div>
+
     <h3>Perifericos</h3>
     <table class="table">
         <tr>
@@ -79,6 +104,7 @@
             <th>Nombre</th>
             <th>Precio</th>
             <th>Stock</th>
+            <th>Editar</th>
         </tr>
         <% var perifericos = ObtenerPerifericos(); %>
         <% foreach (var p in perifericos)
@@ -88,7 +114,31 @@
             <td><%= p.Nombre %></td>
             <td><%= p.Precio %></td>
             <td><%= p.CantidadStock %></td>
+            <td><a href="EditarPeriferico.aspx?id=<%: p.Id %>">Editar</a></td>
         </tr>
         <% } %>
     </table>
+
+     <div>
+        <div class="form-group">
+            <label for="NombrePeriferico">Nombre</label>
+            <asp:TextBox ID="NombrePeriferico" CssClass="form-control" type="text" runat="server" />
+        </div>
+
+        <div class="form-group">
+            <label for="PrecioPeriferico">Precio</label>
+            <asp:TextBox ID="PrecioPeriferico" CssClass="form-control"  runat="server" />
+        </div>
+
+        <div class="form-group">
+            <label for="StockPeriferico">Stock</label>
+            <asp:TextBox ID="StockPeriferico" CssClass="form-control" runat="server" />
+        </div>
+
+        <div class="form-group">
+            <label for="DescripcionPeriferico">Descripcion</label>
+            <asp:TextBox ID="DescripcionPeriferico" type="textarea" CssClass="form-control" runat="server" />
+        </div>
+        <asp:Button Text="Crear Periferico" OnClick="CrearPeriferico" CssClass="btn btn-default" runat="server" />        
+    </div>
 </asp:Content>

@@ -63,6 +63,16 @@ namespace Modelo.EN
             _cad.Crear(this);
         }
 
+        public ConsolaEN ObtenerPorId()
+        {
+            return _cad.ObtenerPorId(Id);
+        }
+
+        public override void Actualizar()
+        {
+            _cad.Actualizar(this);
+        }
+
         public IList<ConsolaEN> ObtenerTodos()
         {
             return _cad.ObtenerTodos();

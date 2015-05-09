@@ -26,6 +26,28 @@ namespace Web.Administrador
             Response.Redirect("~/Administrador/Productos.aspx");
         }
 
+        protected void CrearConsola(object sender, EventArgs e)
+        {
+            var c = new ConsolaEN();
+            c.Nombre = NombreConsola.Text;
+            c.Precio = double.Parse(PrecioConsola.Text);
+            c.CantidadStock = int.Parse(StockConsola.Text);
+            c.Descripcion = DescripcionConsola.Text;
+            c.Guardar();
+            Response.Redirect("~/Administrador/Productos.aspx");
+        }
+
+        protected void CrearPeriferico(object sender, EventArgs e)
+        {
+            var p = new PerifericoEN();
+            p.Nombre = NombrePeriferico.Text;
+            p.Precio = double.Parse(PrecioPeriferico.Text);
+            p.CantidadStock = int.Parse(StockPeriferico.Text);
+            p.Descripcion = Descripcion.Text;
+            p.Guardar();
+            Response.Redirect("~/Administrador/Productos.aspx");
+        }
+
         protected IList<VideojuegoEN> ObtenerVideojuegos()
         {
             return (new VideojuegoEN()).ObtenerTodos();
