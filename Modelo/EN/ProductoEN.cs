@@ -11,7 +11,7 @@ namespace Modelo.EN
     /// </summary>
     public class ProductoEN
     {
-        private ProductoCAD cad;
+        private ProductoCAD _cad;
 
         private bool descuento;
         public bool Descuento { get { return descuento; } set { descuento = value; } }
@@ -43,7 +43,7 @@ namespace Modelo.EN
 
          public ProductoEN()
         {
-            cad = new ProductoCAD();
+            _cad = new ProductoCAD();
         }
 
         public ProductoEN(int id, string nombre, double precio, int cantidadstock)
@@ -62,7 +62,7 @@ namespace Modelo.EN
             Nombre = nombre;
             Precio = precio;
             CantidadStock = cantidadstock;
-            cad = new ProductoCAD();
+            _cad = new ProductoCAD();
         }
 
         public override bool Equals(Object obj)
@@ -85,7 +85,7 @@ namespace Modelo.EN
         /// </summary>
         public virtual void Guardar()
         {
-            cad.Crear(this);
+            _cad.Crear(this);
         }
 
         /// <summary>
@@ -95,7 +95,19 @@ namespace Modelo.EN
         /// <returns>Entidad del producto</returns>
         public ProductoEN Obtener(int id)
         {
-            return cad.Obtener(id);
+            return _cad.Obtener(id);
+        }
+
+        public IList<ProductoEN> ObtenerTodos()
+        {
+            var productos = new List<ProductoEN>();
+            var v = new VideojuegoEN();
+            var p = new PerifericoEN();
+            var c = new ConsolaEN();
+            productos.AddRange(v.ObtenerTodos());
+            productos.AddRange(p.ObtenerTodos());
+            productos.AddRange(c.ObtenerTodos());
+            return productos;
         }
 
         /// <summary>
@@ -104,7 +116,7 @@ namespace Modelo.EN
         /// </summary>
         public virtual void Actualizar()
         {
-            cad.Actualizar(this);
+            _cad.Actualizar(this);
         }
 
         /// <summary>
@@ -113,7 +125,7 @@ namespace Modelo.EN
         /// </summary>
         public void Borrar()
         {
-            cad.Borrar(this);
+            _cad.Borrar(this);
         }
     }
 }

@@ -4,12 +4,10 @@ body {
     padding-top: $unit * 6;
 }
 
-.destacado {
-    padding-bottom: $unit * 5;
-
-    img {
-        margin-top: $unit;
-    }
-
-
+.producto {
+    max-width: $unit * 20;
+    display: inline;
+    float: left;
+    margin-right: $unit * 5;
+    margin-top: $unit * 3;
 }

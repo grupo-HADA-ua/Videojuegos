@@ -1,118 +1,30 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Catalogo.aspx.cs" Inherits="Web.Catalogo.Catalogo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <script src="../Scripts/catalogo.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Esto es el catalogo</h2>
-
-    <div class="row">
-        <div class="col-md-4">
-            <a href="~/Catalogo/Detalles.aspx" runat="server">
-                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
-            </a>
-            <label>Watch Dogs</label>
-            <label>19.99€</label>
-            <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
-            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
-        </div>
-        <div class="col-md-4">
-            <a href="~/Catalogo/Detalles.aspx" runat="server">
-                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
-            </a>
-            <label>Watch Dogs</label>
-            <label>19.99€</label>
-            <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
-            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
-        </div>
-        <div class="col-md-4">
-            <a href="~/Catalogo/Detalles.aspx" runat="server">
-                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
-            </a>
-            <label>Watch Dogs</label>
-            <label>19.99€</label>
-            <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
-            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <a href="~/Catalogo/Detalles.aspx" runat="server">
-                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
-            </a>
-            <label>Watch Dogs</label>
-            <label>19.99€</label>
-            <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
-            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
-        </div>
-        <div class="col-md-4">
-            <a href="~/Catalogo/Detalles.aspx" runat="server">
-                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
-            </a>
-            <label>Watch Dogs</label>
-            <label>19.99€</label>
-            <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
-            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
-        </div>
-        <div class="col-md-4">
-            <a href="~/Catalogo/Detalles.aspx" runat="server">
-                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
-            </a>
-            <label>Watch Dogs</label>
-            <label>19.99€</label>
-            <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
-            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <a href="~/Catalogo/Detalles.aspx" runat="server">
-                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
-            </a>
-            <label>Watch Dogs</label>
-            <label>19.99€</label>
-            <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
-            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
-        </div>
-        <div class="col-md-4">
-            <a href="~/Catalogo/Detalles.aspx" runat="server">
-                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
-            </a>
-            <label>Watch Dogs</label>
-            <label>19.99€</label>
-            <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
-            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
-        </div>
-        <div class="col-md-4">
-            <a href="~/Catalogo/Detalles.aspx" runat="server">
-                <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
-            </a>
-            <label>Watch Dogs</label>
-            <label>19.99€</label>
-
-            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
-        </div>
-    </div>
-
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Precio</th>
-        </tr>
-        <% var videojuegos = ObtenerVideojuegos(); %>
-        <% foreach (var v in videojuegos)
-            {%>
-        <tr>
-            <td>
-                <%= v.Nombre %>
-            </td>
-            <td>
-                <%= v.Precio.ToString() %>
-            </td>
-        </tr>
-
-        <%
-            }%>
-    </table>
+    <section class="catalogo">
+        <h2>Catálogo</h2>
+        <% var productos = ObtenerProductos(); %>
+    <% foreach (var p in productos)
+        {%>
+        <article class="producto">
+            <p><%= p.Nombre %></p>
+            <div>
+                <a href="#">
+                    <img src="../Imagenes/WatchDogs.jpg" alt="Imagen Videojuego"/>
+                </a>
+            </div>
+            <footer>
+                <span><%= p.Precio %> €</span> |
+                <a href="#">Ver Detalles</a> |
+                <% var tipo = Tipo(p); %>
+                <a href="">Añadir</a>
+                <asp:Button Text="Comprar" runat="server" />
+            </footer>
+        </article>
+    <%
+        }%>
+    </section>
 </asp:Content>

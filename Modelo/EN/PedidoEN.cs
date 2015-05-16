@@ -8,13 +8,15 @@ namespace Modelo.EN
 {
     public class PedidoEN
     {
-        private IPedidoCAD cad;
+        private PedidoCAD _cad;
 
         private int id;
         public int Id { get { return id; } set { id = value; } }
 
-        private int idCliente;
-        public int IdCliente { get { return idCliente; } set { idCliente = value; } }
+        private int cliente;
+        public int Cliente { get { return cliente; } set { cliente = value; } }
+
+        public double Total { get; set; }
 
         private IList<LineaPedidoEN> lineas;
         public IList<LineaPedidoEN> Lineas 
@@ -27,12 +29,12 @@ namespace Modelo.EN
         public PedidoEN()
         {
             Lineas = new List<LineaPedidoEN>();
-            cad = new PedidoCAD();
+            _cad = new PedidoCAD();
         }
 
         public PedidoEN(PedidoEN p)
         {
-            inicializar(p.Id, p.IdCliente, p.Lineas);
+            inicializar(p.Id, p.Cliente, p.Lineas);
         }
 
         public PedidoEN(int id, int idCliente, IList<LineaPedidoEN> l)
@@ -43,34 +45,39 @@ namespace Modelo.EN
         private void inicializar(int id, int idCliente, IList<LineaPedidoEN> l)
         {
             Id = id;
-            IdCliente = idCliente;
+            Cliente = idCliente;
             Lineas = new List<LineaPedidoEN>(l);
-            cad = new PedidoCAD();
+            _cad = new PedidoCAD();
         }
 
         public void Guardar()
         {
-            cad.Crear(this);
+            _cad.Crear(this);
         }
 
         public PedidoEN Obtener(int id)
         {
-            return cad.Obtener(id);
+            return _cad.Obtener(id);
         }
 
         public IList<PedidoEN> ObtenerTodos()
         {
-            return cad.ObtenerTodos();
+            return _cad.ObtenerTodos();
         }
 
         public void Actualizar()
         {
-            cad.Actualizar(this);
+            _cad.Actualizar(this);
         }
 
         public void Borrar()
         {
-            cad.Borrar(this);
+            _cad.Borrar(this);
+        }
+
+        public void BorrarTodos()
+        {
+            _cad.BorrarTodos();
         }
     }
 }

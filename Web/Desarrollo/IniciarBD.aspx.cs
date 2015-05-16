@@ -12,6 +12,33 @@ namespace Web.Desarrollo
             GenerarAdministradores();
             GenerarConsolas();
             GenerarPerifericos();
+            GenerarPedidos();
+            GenerarLineas();
+        }
+
+        private void GenerarPedidos()
+        {
+            var p = new PedidoEN();
+            p.BorrarTodos();
+            p.Cliente = 1;
+            p.Total = 100.0;
+            p.Guardar();
+        }
+
+        private void GenerarLineas()
+        {
+            var l = new LineaPedidoEN();
+            l.BorrarTodos();
+            l.Pedido = 1;
+            l.Cantidad = 1;
+            l.Videojuego = 2;
+            l.Guardar();
+
+            l = new LineaPedidoEN();
+            l.Pedido = 1;
+            l.Cantidad = 1;
+            l.Consola = 1;
+            l.Guardar();
         }
 
         private void GenerarClientes()

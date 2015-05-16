@@ -1,9 +1,11 @@
 ﻿body {
   padding-top: 9rem; }
 
-.destacado {
-  padding-bottom: 7.5rem; }
-  .destacado img {
-    margin-top: 1.5rem; }
+.producto {
+  max-width: 30rem;
+  display: inline;
+  float: left;
+  margin-right: 7.5rem;
+  margin-top: 4.5rem; }
 
 /*# sourceMappingURL=Style.css.map */

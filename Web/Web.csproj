@@ -91,8 +91,17 @@
     <Content Include="Catalogo\Detalles.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Desarrollo\IniciarBD.aspx" />
+    <Content Include="Imagenes\alejandro.jpg" />
+    <Content Include="Imagenes\almudena.jpg" />
+    <Content Include="Imagenes\facebook.png" />
+    <Content Include="Imagenes\javier.jpg" />
+    <Content Include="Imagenes\joaquin.jpg" />
+    <Content Include="Imagenes\manuel.jpg" />
+    <Content Include="Imagenes\twitter.png" />
     <Content Include="Imagenes\WatchDogs.jpg" />
+    <Content Include="Imagenes\youtube.png" />
     <Content Include="Noticias\Noticias.aspx" />
+    <Content Include="Scripts\catalogo.js" />
     <Content Include="Styles\Estilos.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />

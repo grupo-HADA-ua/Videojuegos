@@ -26,6 +26,9 @@ namespace Modelo.EN
         private string direccion;
         public string Direccion { get { return direccion; } set { direccion = value; } }
 
+        public IList<PedidoEN> pedidos;
+        public IList<PedidoEN> Pedidos { get { return pedidos; } set { pedidos = value; } }
+
         public ClienteEN()
         {
         }
@@ -55,6 +58,7 @@ namespace Modelo.EN
             Email = email;
             Password = password;
             Direccion = direccion;
+            Pedidos = new List<PedidoEN>();
         }
 
         public override bool Equals(Object obj)

@@ -12,7 +12,23 @@ namespace Web.Catalogo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+           if (IsPostBack)
+            {
+                
+            }
+        }
+
+        protected string Tipo(ProductoEN p)
+        {
+            if (p is VideojuegoEN)
+            {
+                return "videojuego";
+            }
+            else if (p is ConsolaEN)
+            {
+                return "consola";
+            }
+            return "periferico";
         }
 
         protected IList<VideojuegoEN> ObtenerVideojuegos()
@@ -20,6 +36,13 @@ namespace Web.Catalogo
             var v = new VideojuegoEN();
             IList<VideojuegoEN> videojuegos = v.ObtenerTodos();
             return videojuegos;
+        }
+
+        protected IList<ProductoEN> ObtenerProductos()
+        {
+            var p = new ProductoEN();
+            IList<ProductoEN> productos = p.ObtenerTodos();
+            return productos;
         }
     }
 }

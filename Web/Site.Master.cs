@@ -20,5 +20,14 @@ namespace Web
             Session.Abandon();
             Response.Redirect("~/");
         }
+
+        public bool Dentro()
+        {
+            if (Session["Cliente"] != null)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

@@ -8,81 +8,52 @@ namespace Modelo.EN
 {
     public class LineaPedidoEN
     {
-
-        private ILineaPedidoCAD cad;
-
-        private int id;
-        public int Id { get { return id; } set { id = value; } }
-
-        private ProductoEN producto;
-        public ProductoEN Producto { get { return producto; } set { producto = value; } }
-
-        private int cantidad;
-        public int Cantidad { get { return cantidad; } set { cantidad = value; } }
+        private LineaPedidoCAD _cad;
+        public int Id { get; set; }
+        public int Pedido { get; set; }
+        public int Videojuego { get; set; }
+        public int Consola { get; set; }
+        public int Periferico { get; set; }
+        public int Cantidad { get; set; }
+        public double Precio { get; set; }
 
         public LineaPedidoEN()
         {
-            cad = new LineaPedidoCAD();
-        }
-
-        public LineaPedidoEN(int id, ProductoEN producto, int cantidad)
-        {
-            inicializar(id, producto, cantidad);
-        }
-
-        public LineaPedidoEN(LineaPedidoEN l)
-        {
-            inicializar(l.Id, l.Producto, l.Cantidad);
-        }
-
-        private void inicializar(int id, ProductoEN producto, int cantidad)
-        {
-            Id = id;
-            Producto = new ProductoEN(producto);
-            Cantidad = cantidad;
-            cad = new LineaPedidoCAD();
-        }
-
-        public override bool  Equals(object obj)
-        {
-            if (obj == null || GetType() != obj.GetType())
-            {
-                return false;
-            }
-            LineaPedidoEN l = (LineaPedidoEN)obj;
-            return (Id == l.Id) && (Producto.Equals(l.Producto) && (Cantidad == l.Cantidad)); 	        
-        }
-
-        public override int GetHashCode()
-        {
-            int hash = 17;
-            hash = hash * 37 + Producto.GetHashCode();
-            return hash;
+            _cad = new LineaPedidoCAD();
+            Videojuego = -1;
+            Consola = -1;
+            Periferico = -1;
         }
 
         public void Guardar()
         {
-            cad.Crear(this);
+            _cad.Crear(this);
         }
 
-        public LineaPedidoEN Obtener(int id)
+        public void BorrarTodos()
         {
-            return cad.Obtener(id);
+            _cad.BorrarTodos();
         }
 
-        public IList<LineaPedidoEN> ObtenerTodos()
+        public ProductoEN Producto()
         {
-            return cad.ObtenerTodos();
+            if (Videojuego != -1)
+            {
+                var v = new VideojuegoEN();
+                v.Id = Videojuego;
+                return v.ObtenerPorId();
+                
+            }
+            else if(Consola != -1)
+            {
+                var c = new ConsolaEN();
+                c.Id = Consola;
+                return c.ObtenerPorId();
+            }
+            var p = new PerifericoEN();
+            p.Id = Periferico;
+            return p.ObtenerPorId();
         }
 
-        public void Actualizar()
-        {
-            cad.Actualizar(this);
-        }
-
-        public void Borrar()
-        {
-            cad.Borrar(this);
-        }
     }
 }
