@@ -20,8 +20,11 @@
                 <span><%= p.Precio %> €</span> |
                 <a href="#">Ver Detalles</a> |
                 <% var tipo = Tipo(p); %>
-                <a href="">Añadir</a>
-                <asp:Button Text="Comprar" runat="server" />
+                <% if (IsLogedIn()) %>
+                <% { %>
+                <a href="Catalogo.aspx?id=<%: p.Id %>&clase=<%: ObtenerClase(p) %>">Añadir</a>
+                <% } %>
+                
             </footer>
         </article>
     <%

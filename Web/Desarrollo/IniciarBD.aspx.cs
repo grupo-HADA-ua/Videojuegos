@@ -12,8 +12,8 @@ namespace Web.Desarrollo
             GenerarAdministradores();
             GenerarConsolas();
             GenerarPerifericos();
-            GenerarPedidos();
-            GenerarLineas();
+            // GenerarPedidos();
+            // GenerarLineas();
         }
 
         private void GenerarPedidos()

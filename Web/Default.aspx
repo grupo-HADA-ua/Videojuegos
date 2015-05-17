@@ -10,7 +10,6 @@
             <label>Watch Dogs</label>
             <label>19.99€</label>
             <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
-            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
             <img src="~/Imagenes/WatchDogs.jpg" alt="Imagen Videojuego" runat="server" />
         </div>
         <div class="col-md-6">
@@ -37,7 +36,6 @@
             <label>Watch Dogs</label>
             <label>19.99€</label>
             <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
-            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
         </div>
         <div class="col-md-4">
             <a href="~/Catalogo/Detalles.aspx" runat="server">
@@ -46,7 +44,6 @@
             <label>Watch Dogs</label>
             <label>19.99€</label>
             <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
-            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
         </div>
         <div class="col-md-4">
             <a href="~/Catalogo/Detalles.aspx" runat="server">
@@ -55,7 +52,6 @@
             <label>Watch Dogs</label>
             <label>19.99€</label>
             <a href="~/Catalogo/Detalles.aspx" runat="server">Ver</a>
-            <asp:Button Text="Añadir" CssClass="btn btn-default" runat="server" />
         </div>
     </div>
 </asp:Content>

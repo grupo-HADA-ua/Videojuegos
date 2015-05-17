@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Modelo.Carrito;
 
 namespace Web.Usuario
 {
@@ -19,6 +20,11 @@ namespace Web.Usuario
         {
             var c = (ClienteEN) Session["Cliente"];
             return c;
+        }
+
+        public Carrito ObtenerCarrito()
+        {
+            return (Carrito)Session["Carrito"];
         }
     }
 }

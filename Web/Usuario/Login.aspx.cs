@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Modelo.EN;
+using Modelo.Carrito;
 
 namespace Web.Usuario
 {
@@ -24,6 +25,7 @@ namespace Web.Usuario
             if (LoginCorrecto(Email.Text, Password.Text))
             {
                 Session.Add("Cliente", c.Obtener());
+                Session.Add("Carrito", new Carrito());
                 Response.Redirect("Perfil");
             }
             Response.Redirect("Login");

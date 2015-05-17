@@ -7,4 +7,24 @@
         Nombre: <%= c.Nombre %>
         Email: <%= c.Email %>
         Dirección: <%= c.Direccion %>
+
+    <h2>
+        Carrito
+    </h2>
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+        </tr>
+        <% var total = 0.0; %>
+        <% foreach (var p in ObtenerCarrito().Productos) %>
+        <% { %>
+        <tr>
+            <td><%= p.Nombre %></td>
+            <td><%= p.Precio %></td>
+            <% total += p.Precio; %>
+        </tr>
+        <% } %>
+    </table>
+    Precio total: <%= total %>
 </asp:Content>

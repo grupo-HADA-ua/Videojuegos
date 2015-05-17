@@ -60,6 +60,7 @@
     <Compile Include="CAD\PerifericoCAD.cs" />
     <Compile Include="CAD\ProductoCAD.cs" />
     <Compile Include="CAD\VideojuegoCAD.cs" />
+    <Compile Include="Carrito\Carrito.cs" />
     <Compile Include="Conexion\Conectar.cs" />
     <Compile Include="ENUM\Edad.cs" />
     <Compile Include="EN\AdministradorEN.cs" />
