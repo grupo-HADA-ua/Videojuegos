@@ -22,11 +22,18 @@ namespace Web.Administrador
 
             if (!IsPostBack)
             {
-                _id = int.Parse(Request["id"]);
-                _p = new PerifericoEN();
-                _p.Id = _id;
-                _p = _p.ObtenerPorId();
-                InformacionActual();
+                if (Request["id"] != null)
+                {
+                    _id = int.Parse(Request["id"]);
+                    _p = new PerifericoEN();
+                    _p.Id = _id;
+                    _p = _p.ObtenerPorId();
+                    InformacionActual();
+                }
+                else
+                {
+                    Response.Redirect("~/Administrador/Productos.aspx");
+                }
             }
         }
 

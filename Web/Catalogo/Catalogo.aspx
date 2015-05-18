@@ -18,7 +18,7 @@
             </div>
             <footer>
                 <span><%= p.Precio %> €</span> |
-                <a href="#">Ver Detalles</a> |
+                <a href="Detalles.aspx?id=<%: p.Id %>&clase=<%: ObtenerClase(p) %>">Ver Detalles</a> |
                 <% var tipo = Tipo(p); %>
                 <% if (IsLogedIn()) %>
                 <% { %>

@@ -4,9 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
         <h1>Perfil del usuario</h1>
         <% var c = getUsuarioActual(); %>
-        Nombre: <%= c.Nombre %>
         Email: <%= c.Email %>
-        Dirección: <%= c.Direccion %>
 
     <h2>
         Carrito

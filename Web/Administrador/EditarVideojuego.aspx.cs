@@ -22,11 +22,19 @@ namespace Web.Administrador
 
             if (!IsPostBack)
             {
-                _id = int.Parse(Request["id"]);
-                _v = new VideojuegoEN();
-                _v.Id = _id;
-                _v = _v.ObtenerPorId();
-                InformacionActual();
+                if (Request["id"] != null)
+                {
+                    _id = int.Parse(Request["id"]);
+                    _v = new VideojuegoEN();
+                    _v.Id = _id;
+                    _v = _v.ObtenerPorId();
+                    InformacionActual();
+                }
+                else
+                {
+                    Response.Redirect("~/Administrador/Productos.aspx");
+                }
+                
             }           
         }
 
