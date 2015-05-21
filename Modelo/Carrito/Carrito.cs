@@ -22,7 +22,9 @@ namespace Modelo.Carrito
 
         public void Remove(ProductoEN producto)
         {
-            Productos.RemoveAll(p => p.Nombre == producto.Nombre);
+            var index = Productos.FindIndex(p => p.Nombre == producto.Nombre);
+            Productos.RemoveAt(index);
+            //Productos.RemoveAll(p => p.Nombre == producto.Nombre);
         }
     }
 }

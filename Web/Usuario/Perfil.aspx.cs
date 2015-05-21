@@ -6,6 +6,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Modelo.Carrito;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace Web.Usuario
 {
@@ -34,6 +37,48 @@ namespace Web.Usuario
         public Carrito ObtenerCarrito()
         {
             return (Carrito)Session["Carrito"];
+        }
+
+        public void Comprar(object sender, EventArgs e)
+        {
+            var compra = new Document(PageSize.LETTER);
+            var writer = PdfWriter.GetInstance(compra, new FileStream(@"c:\Users\Manuel\compra.pdf", FileMode.Create));
+
+            compra.AddTitle("Compra Otrogami");
+            compra.AddCreator("BalumaProject");
+
+            compra.Open();
+            iTextSharp.text.Font standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+            iTextSharp.text.Font boldFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+
+            var fecha = DateTime.Today;
+            var p = new Paragraph();
+            p.Add(new Chunk("FECHA DE COMPRA: " + fecha.ToString(), boldFont));
+
+            compra.Add(p);
+
+            var c = (Carrito)Session["Carrito"];
+            var total = 0.0;
+            c.Productos.ForEach(prod => {
+                var p2 = new Paragraph();
+                p2.Add(new Chunk(prod.Nombre + ", precio: " + prod.Precio.ToString(), standardFont));
+                compra.Add(p2);
+                total += prod.Precio;
+            });
+            var precio = new Paragraph();
+            precio.Add(new Chunk("TOTAL: " + total.ToString(), boldFont));
+            compra.Add(precio);
+
+            compra.Close();
+            writer.Close();
+
+            c.Productos.Clear();
+
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("Content-Disposition", "attachmend; filename=compra.pdf");
+            Response.TransmitFile(@"c:\Users\Manuel\compra.pdf");
+            Response.End();
+            Response.Redirect("Perfil.aspx");
         }
     }
 }

@@ -27,4 +27,5 @@
         <% } %>
     </table>
     Precio total: <%= total %>
+    <asp:Button Text="Comprar" OnClick="Comprar" runat="server" />
 </asp:Content>
