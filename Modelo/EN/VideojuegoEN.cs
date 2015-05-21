@@ -51,9 +51,7 @@ namespace Modelo.EN
             if (!(obj is VideojuegoEN)) return false;
 
             VideojuegoEN p = (VideojuegoEN)obj;
-            return (Id == p.Id && Nombre == p.Nombre && 
-                Precio == p.Precio && CantidadStock == p.CantidadStock 
-                && edadminima == p.edadminima);
+            return Id == p.Id;
         }
 
         public override int GetHashCode()

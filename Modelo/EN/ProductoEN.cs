@@ -70,7 +70,7 @@ namespace Modelo.EN
             if (!(obj is ProductoEN)) return false;
 
             ProductoEN p = (ProductoEN)obj;
-            return id == p.id & nombre == p.nombre & precio == p.precio & cantidadstock == p.cantidadstock;
+            return id == p.id;
         }
 
         public override int GetHashCode()

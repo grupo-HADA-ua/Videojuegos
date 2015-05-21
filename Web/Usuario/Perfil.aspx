@@ -13,6 +13,7 @@
         <tr>
             <th>Nombre</th>
             <th>Precio</th>
+            <th>Eliminar</th>
         </tr>
         <% var total = 0.0; %>
         <% foreach (var p in ObtenerCarrito().Productos) %>
@@ -20,6 +21,7 @@
         <tr>
             <td><%= p.Nombre %></td>
             <td><%= p.Precio %></td>
+            <td><a href="Perfil.aspx?id=<%: p.Id %>&nombre=<%: p.Nombre %>">eliminar</a></td>
             <% total += p.Precio; %>
         </tr>
         <% } %>

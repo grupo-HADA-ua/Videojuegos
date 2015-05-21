@@ -13,7 +13,16 @@ namespace Web.Usuario
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request["id"] != null)
+            {
+                var c = (Carrito)Session["Carrito"];
+                var p = new ProductoEN();
+                p.Id = int.Parse(Request["id"]);
+                p.Nombre = Request["nombre"];
+                c.Remove(p);
+                Session["Carrito"] = c;
+                Response.Redirect("~/Usuario/Perfil.aspx");
+            }
         }
 
         public ClienteEN getUsuarioActual()

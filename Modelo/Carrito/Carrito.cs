@@ -8,7 +8,7 @@ namespace Modelo.Carrito
 {
     public class Carrito
     {
-        public IList<ProductoEN> Productos { get; set; }
+        public List<ProductoEN> Productos { get; set; }
 
         public Carrito()
         {
@@ -18,6 +18,11 @@ namespace Modelo.Carrito
         public void Add(ProductoEN p)
         {
             Productos.Add(p);
+        }
+
+        public void Remove(ProductoEN producto)
+        {
+            Productos.RemoveAll(p => p.Nombre == producto.Nombre);
         }
     }
 }
